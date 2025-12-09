@@ -502,6 +502,56 @@ void Lcd_Dma_Trans(void)
 }
 
 /*********************************************************************************************
+* name:         Lcd_mostrar_pantalla_bienvenida
+* func:         Muestra pantalla inicial con instrucciones del juego Sudoku
+* para:         ninguno
+* ret:          none
+* modify:
+* comment:      Pantalla de bienvenida antes de iniciar el juego
+*********************************************************************************************/
+void Lcd_mostrar_pantalla_bienvenida(void)
+{
+	/* initial LCD controller */
+	Lcd_Init();
+	/* clear screen */
+	Lcd_Clr();
+	Lcd_Active_Clr();
+	LcdClrRect(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, WHITE);
+
+	/* Mostrar título del juego */
+	Lcd_DspAscII8x16(100, 10, BLACK, "SUDOKU");
+	
+	/* Mostrar instrucciones para jugar */
+	Lcd_DspAscII8x16(10, 40, BLACK, "INSTRUCCIONES:");
+	Lcd_DspAscII8x16(10, 60, DARKGRAY, "- Introduce fila, columna y valor");
+	Lcd_DspAscII8x16(10, 80, DARKGRAY, "- Valores de 1 a 9");
+	Lcd_DspAscII8x16(10, 100, DARKGRAY, "- Fila 0 termina la partida");
+	Lcd_DspAscII8x16(10, 120, DARKGRAY, "- Se muestran candidatos en");
+	Lcd_DspAscII8x16(10, 140, DARKGRAY, "  celdas vacias");
+	
+	Lcd_DspAscII8x16(40, 190, BLACK, "Pulse un boton para jugar");
+
+	Lcd_Dma_Trans();
+
+	/* wait for any button press */
+	while( (rPDATG & 0x0f) == 0x0f )
+	{
+		Delay(10);
+	}
+
+	/* Esperar a que se suelte el botón */
+	while( (rPDATG & 0x0f) != 0x0f )
+	{
+		Delay(10);
+	}
+
+	/* clear screen before starting the game */
+	Lcd_Clr();
+	Lcd_Active_Clr();
+	Lcd_Dma_Trans();
+}
+
+/*********************************************************************************************
 * name:		Lcd_Test()
 * func:		LCD test function
 * para:		none
@@ -509,44 +559,6 @@ void Lcd_Dma_Trans(void)
 * modify:
 * comment:		
 *********************************************************************************************/
-/*********************************************************************************************
-* name:         Lcd_Mostrar_Pantalla_Inicial
-* func:         muestra la pantalla inicial con instrucciones y espera pulsacin
-* para:         ninguno
-* ret:          none
-* modify:
-* comment:
-*********************************************************************************************/
-void Lcd_Mostrar_Pantalla_Inicial(void)
-{
-        /* initial LCD controller */
-        Lcd_Init();
-        /* clear screen */
-        Lcd_Clr();
-        Lcd_Active_Clr();
-        LcdClrRect(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, WHITE);
-
-        /* draw instructions */
-        Lcd_DspAscII8x16(20, 20, BLACK, "Sudoku - Instrucciones:");
-        Lcd_DspAscII8x16(20, 50, BLACK, "Introduce jugadas: fila,columna,valor.");
-        Lcd_DspAscII8x16(20, 70, BLACK, "Valores de 1-9 en cada posicion.");
-        Lcd_DspAscII8x16(20, 90, BLACK, "Fila 0 termina la partida en curso.");
-        Lcd_DspAscII8x16(20, 200, BLACK, "Pulse un botn para jugar");
-
-        Lcd_Dma_Trans();
-
-        /* wait for any button press */
-        while( (rPDATG & 0x0f) == 0x0f )
-        {
-                Delay(10);
-        }
-
-        /* clear screen before starting the game */
-        Lcd_Clr();
-        Lcd_Active_Clr();
-        Lcd_Dma_Trans();
-}
-
 void Lcd_Test(void)
 {
 	/* initial LCD controller */
@@ -579,5 +591,3 @@ void Lcd_Test(void)
 	Lcd_Dma_Trans();
 
 }
-
-

@@ -15,6 +15,9 @@
 /*--- function declare ---*/
 void Main(void);
 
+/*--- extern function ---*/
+extern void Lcd_Test();
+
 /*--- function code ---*/
 /*********************************************************************************************
 * name:		main
@@ -28,12 +31,12 @@ void Main(void)
 {
     sys_init();        /* Initial 44B0X's Interrupt, Port and UART */
     // CAMBIARRR _Link();           /* Print Misc info */
-        /******************/
-        /* user interface */
-        /******************/
-        Lcd_Mostrar_Pantalla_Inicial();
-        Lcd_Test();
-        TS_Test();
+	/******************/
+	/* user interface */
+	/******************/
+	/* Mostrar pantalla de bienvenida */
+	Lcd_mostrar_pantalla_bienvenida();	Lcd_Test();
+	TS_Test();
 		
 	while(1)
 	 {

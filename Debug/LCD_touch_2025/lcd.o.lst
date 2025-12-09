@@ -18,7 +18,7 @@
    1:../LCD_touch_2025/lcd.c **** /*********************************************************************************************
    2:../LCD_touch_2025/lcd.c **** * Fichero:	lcd.c
    3:../LCD_touch_2025/lcd.c **** * Autor:	
-   4:../LCD_touch_2025/lcd.c **** * Descrip:	funciones de visualización y control LCD
+   4:../LCD_touch_2025/lcd.c **** * Descrip:	funciones de visualizaciÊ¢ü y control LCD
    5:../LCD_touch_2025/lcd.c **** * Version:	<P6-ARM>
    6:../LCD_touch_2025/lcd.c **** *********************************************************************************************/
    7:../LCD_touch_2025/lcd.c **** 
@@ -29,7 +29,7 @@
   12:../LCD_touch_2025/lcd.c **** #include "lcd.h"
   13:../LCD_touch_2025/lcd.c **** #include "Bmp.h"
   14:../LCD_touch_2025/lcd.c **** 
-  15:../LCD_touch_2025/lcd.c **** /*--- definición de macros ---*/
+  15:../LCD_touch_2025/lcd.c **** /*--- definiciÊ¢ü de macros ---*/
   16:../LCD_touch_2025/lcd.c **** #define DMA_Byte  (0)
   17:../LCD_touch_2025/lcd.c **** #define DMA_HW    (1)
   18:../LCD_touch_2025/lcd.c **** #define DMA_Word  (2)
@@ -40,7 +40,7 @@
   23:../LCD_touch_2025/lcd.c **** extern INT8U g_auc_Ascii6x8[];
   24:../LCD_touch_2025/lcd.c **** extern STRU_BITMAP Stru_Bitmap_gbMouse;
   25:../LCD_touch_2025/lcd.c **** 
-  26:../LCD_touch_2025/lcd.c **** /*--- código de la función ---*/
+  26:../LCD_touch_2025/lcd.c **** /*--- cÊ¢îigo de la funciÊ¢ü ---*/
   27:../LCD_touch_2025/lcd.c **** void Lcd_Init(void)
   28:../LCD_touch_2025/lcd.c **** {       
  2134              		.loc 1 28 0
@@ -3136,252 +3136,495 @@
  4721              		.section	.rodata
  4722              		.align	2
  4723              	.LC0:
- 4724 0000 436F6469 		.ascii	"Codigo del puesto: \000"
- 4724      676F2064 
- 4724      656C2070 
- 4724      75657374 
- 4724      6F3A2000 
- 4725              		.text
- 4726              		.align	2
- 4727              		.global	Lcd_Test
- 4729              	Lcd_Test:
- 4730              	.LFB15:
+ 4724 0000 5355444F 		.ascii	"SUDOKU\000"
+ 4724      4B5500
+ 4725 0007 00       		.align	2
+ 4726              	.LC1:
+ 4727 0008 494E5354 		.ascii	"INSTRUCCIONES:\000"
+ 4727      52554343 
+ 4727      494F4E45 
+ 4727      533A00
+ 4728 0017 00       		.align	2
+ 4729              	.LC2:
+ 4730 0018 2D20496E 		.ascii	"- Introduce fila, columna y valor\000"
+ 4730      74726F64 
+ 4730      75636520 
+ 4730      66696C61 
+ 4730      2C20636F 
+ 4731 003a 0000     		.align	2
+ 4732              	.LC3:
+ 4733 003c 2D205661 		.ascii	"- Valores de 1 a 9\000"
+ 4733      6C6F7265 
+ 4733      73206465 
+ 4733      20312061 
+ 4733      203900
+ 4734 004f 00       		.align	2
+ 4735              	.LC4:
+ 4736 0050 2D204669 		.ascii	"- Fila 0 termina la partida\000"
+ 4736      6C612030 
+ 4736      20746572 
+ 4736      6D696E61 
+ 4736      206C6120 
+ 4737              		.align	2
+ 4738              	.LC5:
+ 4739 006c 2D205365 		.ascii	"- Se muestran candidatos en\000"
+ 4739      206D7565 
+ 4739      73747261 
+ 4739      6E206361 
+ 4739      6E646964 
+ 4740              		.align	2
+ 4741              	.LC6:
+ 4742 0088 20206365 		.ascii	"  celdas vacias\000"
+ 4742      6C646173 
+ 4742      20766163 
+ 4742      69617300 
+ 4743              		.align	2
+ 4744              	.LC7:
+ 4745 0098 50756C73 		.ascii	"Pulse un boton para jugar\000"
+ 4745      6520756E 
+ 4745      20626F74 
+ 4745      6F6E2070 
+ 4745      61726120 
+ 4746              		.text
+ 4747              		.align	2
+ 4748              		.global	Lcd_mostrar_pantalla_bienvenida
+ 4750              	Lcd_mostrar_pantalla_bienvenida:
+ 4751              	.LFB15:
  503:../LCD_touch_2025/lcd.c **** 
  504:../LCD_touch_2025/lcd.c **** /*********************************************************************************************
- 505:../LCD_touch_2025/lcd.c **** * name:		Lcd_Test()
- 506:../LCD_touch_2025/lcd.c **** * func:		LCD test function
- 507:../LCD_touch_2025/lcd.c **** * para:		none
- 508:../LCD_touch_2025/lcd.c **** * ret:		none
+ 505:../LCD_touch_2025/lcd.c **** * name:         Lcd_mostrar_pantalla_bienvenida
+ 506:../LCD_touch_2025/lcd.c **** * func:         Muestra pantalla inicial con instrucciones del juego Sudoku
+ 507:../LCD_touch_2025/lcd.c **** * para:         ninguno
+ 508:../LCD_touch_2025/lcd.c **** * ret:          none
  509:../LCD_touch_2025/lcd.c **** * modify:
- 510:../LCD_touch_2025/lcd.c **** * comment:		
+ 510:../LCD_touch_2025/lcd.c **** * comment:      Pantalla de bienvenida antes de iniciar el juego
  511:../LCD_touch_2025/lcd.c **** *********************************************************************************************/
- 512:../LCD_touch_2025/lcd.c **** void Lcd_Test(void)
+ 512:../LCD_touch_2025/lcd.c **** void Lcd_mostrar_pantalla_bienvenida(void)
  513:../LCD_touch_2025/lcd.c **** {
- 4731              		.loc 1 513 0
- 4732              		.cfi_startproc
- 4733              		@ Function supports interworking.
- 4734              		@ args = 0, pretend = 0, frame = 0
- 4735              		@ frame_needed = 1, uses_anonymous_args = 0
- 4736 1ea4 0DC0A0E1 		mov	ip, sp
- 4737              	.LCFI30:
- 4738              		.cfi_def_cfa_register 12
- 4739 1ea8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
- 4740 1eac 04B04CE2 		sub	fp, ip, #4
- 4741              		.cfi_offset 14, -8
- 4742              		.cfi_offset 13, -12
- 4743              		.cfi_offset 11, -16
- 4744              	.LCFI31:
- 4745              		.cfi_def_cfa 11, 4
- 4746 1eb0 08D04DE2 		sub	sp, sp, #8
+ 4752              		.loc 1 513 0
+ 4753              		.cfi_startproc
+ 4754              		@ Function supports interworking.
+ 4755              		@ args = 0, pretend = 0, frame = 0
+ 4756              		@ frame_needed = 1, uses_anonymous_args = 0
+ 4757 1ea4 0DC0A0E1 		mov	ip, sp
+ 4758              	.LCFI30:
+ 4759              		.cfi_def_cfa_register 12
+ 4760 1ea8 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 4761 1eac 04B04CE2 		sub	fp, ip, #4
+ 4762              		.cfi_offset 14, -8
+ 4763              		.cfi_offset 13, -12
+ 4764              		.cfi_offset 11, -16
+ 4765              	.LCFI31:
+ 4766              		.cfi_def_cfa 11, 4
+ 4767 1eb0 08D04DE2 		sub	sp, sp, #8
  514:../LCD_touch_2025/lcd.c **** 	/* initial LCD controller */
  515:../LCD_touch_2025/lcd.c **** 	Lcd_Init();
- 4747              		.loc 1 515 0
- 4748 1eb4 FEFFFFEB 		bl	Lcd_Init
+ 4768              		.loc 1 515 0
+ 4769 1eb4 FEFFFFEB 		bl	Lcd_Init
  516:../LCD_touch_2025/lcd.c **** 	/* clear screen */
  517:../LCD_touch_2025/lcd.c **** 	Lcd_Clr();
- 4749              		.loc 1 517 0
- 4750 1eb8 FEFFFFEB 		bl	Lcd_Clr
+ 4770              		.loc 1 517 0
+ 4771 1eb8 FEFFFFEB 		bl	Lcd_Clr
  518:../LCD_touch_2025/lcd.c **** 	Lcd_Active_Clr();
- 4751              		.loc 1 518 0
- 4752 1ebc FEFFFFEB 		bl	Lcd_Active_Clr
- 519:../LCD_touch_2025/lcd.c **** 
- 520:../LCD_touch_2025/lcd.c **** 	/* draw rectangle pattern */ 
- 521:../LCD_touch_2025/lcd.c ****     #ifdef Eng_v // english version
- 522:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10,0,DARKGRAY,"Embest S3CEV40 ");
- 523:../LCD_touch_2025/lcd.c **** 	#else
- 524:../LCD_touch_2025/lcd.c **** //	Lcd_DspHz16(10,0,DARKGRAY,"”¢›ÌÃÿ»˝–« µ—È∆¿π¿∞Â");
- 525:../LCD_touch_2025/lcd.c **** 	#endif
- 526:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10,20,BLACK,"Codigo del puesto: ");
- 4753              		.loc 1 526 0
- 4754 1ec0 0A00A0E3 		mov	r0, #10
- 4755 1ec4 1410A0E3 		mov	r1, #20
- 4756 1ec8 0F20A0E3 		mov	r2, #15
- 4757 1ecc A0319FE5 		ldr	r3, .L111
- 4758 1ed0 FEFFFFEB 		bl	Lcd_DspAscII8x16
- 527:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(10,40,310,230,14);
- 4759              		.loc 1 527 0
- 4760 1ed4 0E30A0E3 		mov	r3, #14
- 4761 1ed8 00308DE5 		str	r3, [sp, #0]
- 4762 1edc 0A00A0E3 		mov	r0, #10
- 4763 1ee0 2810A0E3 		mov	r1, #40
- 4764 1ee4 8C219FE5 		ldr	r2, .L111+4
- 4765 1ee8 E630A0E3 		mov	r3, #230
- 4766 1eec FEFFFFEB 		bl	Lcd_Draw_Box
- 528:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(20,45,300,225,13);
- 4767              		.loc 1 528 0
- 4768 1ef0 0D30A0E3 		mov	r3, #13
- 4769 1ef4 00308DE5 		str	r3, [sp, #0]
- 4770 1ef8 1400A0E3 		mov	r0, #20
- 4771 1efc 2D10A0E3 		mov	r1, #45
- 4772 1f00 4B2FA0E3 		mov	r2, #300
- 4773 1f04 E130A0E3 		mov	r3, #225
- 4774 1f08 FEFFFFEB 		bl	Lcd_Draw_Box
- 529:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(30,50,290,220,12);
- 4775              		.loc 1 529 0
- 4776 1f0c 0C30A0E3 		mov	r3, #12
- 4777 1f10 00308DE5 		str	r3, [sp, #0]
- 4778 1f14 1E00A0E3 		mov	r0, #30
- 4779 1f18 3210A0E3 		mov	r1, #50
- 4780 1f1c 58219FE5 		ldr	r2, .L111+8
- 4781 1f20 DC30A0E3 		mov	r3, #220
- 4782 1f24 FEFFFFEB 		bl	Lcd_Draw_Box
- 530:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(40,55,280,215,11);
- 4783              		.loc 1 530 0
- 4784 1f28 0B30A0E3 		mov	r3, #11
- 4785 1f2c 00308DE5 		str	r3, [sp, #0]
- 4786 1f30 2800A0E3 		mov	r0, #40
- 4787 1f34 3710A0E3 		mov	r1, #55
- 4788 1f38 462FA0E3 		mov	r2, #280
- 4789 1f3c D730A0E3 		mov	r3, #215
- 4790 1f40 FEFFFFEB 		bl	Lcd_Draw_Box
- 531:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(50,60,270,210,10);
- 4791              		.loc 1 531 0
- 4792 1f44 0A30A0E3 		mov	r3, #10
- 4793 1f48 00308DE5 		str	r3, [sp, #0]
- 4794 1f4c 3200A0E3 		mov	r0, #50
- 4795 1f50 3C10A0E3 		mov	r1, #60
- 4796 1f54 24219FE5 		ldr	r2, .L111+12
- 4797 1f58 D230A0E3 		mov	r3, #210
- 4798 1f5c FEFFFFEB 		bl	Lcd_Draw_Box
- 532:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(60,65,260,205,9);
- 4799              		.loc 1 532 0
- 4800 1f60 0930A0E3 		mov	r3, #9
- 4801 1f64 00308DE5 		str	r3, [sp, #0]
- 4802 1f68 3C00A0E3 		mov	r0, #60
- 4803 1f6c 4110A0E3 		mov	r1, #65
- 4804 1f70 412FA0E3 		mov	r2, #260
- 4805 1f74 CD30A0E3 		mov	r3, #205
- 4806 1f78 FEFFFFEB 		bl	Lcd_Draw_Box
- 533:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(70,70,250,200,8);
- 4807              		.loc 1 533 0
- 4808 1f7c 0830A0E3 		mov	r3, #8
- 4809 1f80 00308DE5 		str	r3, [sp, #0]
- 4810 1f84 4600A0E3 		mov	r0, #70
- 4811 1f88 4610A0E3 		mov	r1, #70
- 4812 1f8c FA20A0E3 		mov	r2, #250
- 4813 1f90 C830A0E3 		mov	r3, #200
- 4814 1f94 FEFFFFEB 		bl	Lcd_Draw_Box
- 534:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(80,75,240,195,7);
- 4815              		.loc 1 534 0
- 4816 1f98 0730A0E3 		mov	r3, #7
- 4817 1f9c 00308DE5 		str	r3, [sp, #0]
- 4818 1fa0 5000A0E3 		mov	r0, #80
- 4819 1fa4 4B10A0E3 		mov	r1, #75
- 4820 1fa8 F020A0E3 		mov	r2, #240
- 4821 1fac C330A0E3 		mov	r3, #195
- 4822 1fb0 FEFFFFEB 		bl	Lcd_Draw_Box
- 535:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(90,80,230,190,6);
- 4823              		.loc 1 535 0
- 4824 1fb4 0630A0E3 		mov	r3, #6
- 4825 1fb8 00308DE5 		str	r3, [sp, #0]
- 4826 1fbc 5A00A0E3 		mov	r0, #90
- 4827 1fc0 5010A0E3 		mov	r1, #80
- 4828 1fc4 E620A0E3 		mov	r2, #230
- 4829 1fc8 BE30A0E3 		mov	r3, #190
- 4830 1fcc FEFFFFEB 		bl	Lcd_Draw_Box
- 536:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(100,85,220,185,5);
- 4831              		.loc 1 536 0
- 4832 1fd0 0530A0E3 		mov	r3, #5
- 4833 1fd4 00308DE5 		str	r3, [sp, #0]
- 4834 1fd8 6400A0E3 		mov	r0, #100
- 4835 1fdc 5510A0E3 		mov	r1, #85
- 4836 1fe0 DC20A0E3 		mov	r2, #220
- 4837 1fe4 B930A0E3 		mov	r3, #185
- 4838 1fe8 FEFFFFEB 		bl	Lcd_Draw_Box
- 537:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(110,90,210,180,4);
- 4839              		.loc 1 537 0
- 4840 1fec 0430A0E3 		mov	r3, #4
- 4841 1ff0 00308DE5 		str	r3, [sp, #0]
- 4842 1ff4 6E00A0E3 		mov	r0, #110
- 4843 1ff8 5A10A0E3 		mov	r1, #90
- 4844 1ffc D220A0E3 		mov	r2, #210
- 4845 2000 B430A0E3 		mov	r3, #180
- 4846 2004 FEFFFFEB 		bl	Lcd_Draw_Box
- 538:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(120,95,200,175,3);
- 4847              		.loc 1 538 0
- 4848 2008 0330A0E3 		mov	r3, #3
- 4849 200c 00308DE5 		str	r3, [sp, #0]
- 4850 2010 7800A0E3 		mov	r0, #120
- 4851 2014 5F10A0E3 		mov	r1, #95
- 4852 2018 C820A0E3 		mov	r2, #200
- 4853 201c AF30A0E3 		mov	r3, #175
- 4854 2020 FEFFFFEB 		bl	Lcd_Draw_Box
- 539:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(130,100,190,170,2);
- 4855              		.loc 1 539 0
- 4856 2024 0230A0E3 		mov	r3, #2
- 4857 2028 00308DE5 		str	r3, [sp, #0]
- 4858 202c 8200A0E3 		mov	r0, #130
- 4859 2030 6410A0E3 		mov	r1, #100
- 4860 2034 BE20A0E3 		mov	r2, #190
- 4861 2038 AA30A0E3 		mov	r3, #170
- 4862 203c FEFFFFEB 		bl	Lcd_Draw_Box
- 540:../LCD_touch_2025/lcd.c **** 	BitmapView(125,135,Stru_Bitmap_gbMouse);
- 4863              		.loc 1 540 0
- 4864 2040 3C309FE5 		ldr	r3, .L111+16
- 4865 2044 0D20A0E1 		mov	r2, sp
- 4866 2048 081083E2 		add	r1, r3, #8
- 4867 204c 030091E8 		ldmia	r1, {r0, r1}
- 4868 2050 030082E8 		stmia	r2, {r0, r1}
- 4869 2054 0C0093E8 		ldmia	r3, {r2, r3}
- 4870 2058 7D00A0E3 		mov	r0, #125
- 4871 205c 8710A0E3 		mov	r1, #135
- 4872 2060 FEFFFFEB 		bl	BitmapView
- 541:../LCD_touch_2025/lcd.c **** 	Lcd_Dma_Trans();
- 4873              		.loc 1 541 0
- 4874 2064 FEFFFFEB 		bl	Lcd_Dma_Trans
- 542:../LCD_touch_2025/lcd.c **** 
- 543:../LCD_touch_2025/lcd.c **** }
- 4875              		.loc 1 543 0
- 4876 2068 0CD04BE2 		sub	sp, fp, #12
- 4877 206c 00689DE8 		ldmfd	sp, {fp, sp, lr}
- 4878 2070 1EFF2FE1 		bx	lr
- 4879              	.L112:
- 4880              		.align	2
- 4881              	.L111:
- 4882 2074 00000000 		.word	.LC0
- 4883 2078 36010000 		.word	310
- 4884 207c 22010000 		.word	290
- 4885 2080 0E010000 		.word	270
- 4886 2084 00000000 		.word	Stru_Bitmap_gbMouse
- 4887              		.cfi_endproc
- 4888              	.LFE15:
- 4890              	.Letext0:
+ 4772              		.loc 1 518 0
+ 4773 1ebc FEFFFFEB 		bl	Lcd_Active_Clr
+ 519:../LCD_touch_2025/lcd.c **** 	LcdClrRect(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, WHITE);
+ 4774              		.loc 1 519 0
+ 4775 1ec0 0030A0E3 		mov	r3, #0
+ 4776 1ec4 00308DE5 		str	r3, [sp, #0]
+ 4777 1ec8 0000A0E3 		mov	r0, #0
+ 4778 1ecc 0010A0E3 		mov	r1, #0
+ 4779 1ed0 00219FE5 		ldr	r2, .L115
+ 4780 1ed4 EF30A0E3 		mov	r3, #239
+ 4781 1ed8 FEFFFFEB 		bl	LcdClrRect
+ 520:../LCD_touch_2025/lcd.c **** 
+ 521:../LCD_touch_2025/lcd.c **** 	/* Mostrar t√≠tulo del juego */
+ 522:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(100, 10, BLACK, "SUDOKU");
+ 4782              		.loc 1 522 0
+ 4783 1edc 6400A0E3 		mov	r0, #100
+ 4784 1ee0 0A10A0E3 		mov	r1, #10
+ 4785 1ee4 0F20A0E3 		mov	r2, #15
+ 4786 1ee8 EC309FE5 		ldr	r3, .L115+4
+ 4787 1eec FEFFFFEB 		bl	Lcd_DspAscII8x16
+ 523:../LCD_touch_2025/lcd.c **** 	
+ 524:../LCD_touch_2025/lcd.c **** 	/* Mostrar instrucciones para jugar */
+ 525:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10, 40, BLACK, "INSTRUCCIONES:");
+ 4788              		.loc 1 525 0
+ 4789 1ef0 0A00A0E3 		mov	r0, #10
+ 4790 1ef4 2810A0E3 		mov	r1, #40
+ 4791 1ef8 0F20A0E3 		mov	r2, #15
+ 4792 1efc DC309FE5 		ldr	r3, .L115+8
+ 4793 1f00 FEFFFFEB 		bl	Lcd_DspAscII8x16
+ 526:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10, 60, DARKGRAY, "- Introduce fila, columna y valor");
+ 4794              		.loc 1 526 0
+ 4795 1f04 0A00A0E3 		mov	r0, #10
+ 4796 1f08 3C10A0E3 		mov	r1, #60
+ 4797 1f0c 0A20A0E3 		mov	r2, #10
+ 4798 1f10 CC309FE5 		ldr	r3, .L115+12
+ 4799 1f14 FEFFFFEB 		bl	Lcd_DspAscII8x16
+ 527:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10, 80, DARKGRAY, "- Valores de 1 a 9");
+ 4800              		.loc 1 527 0
+ 4801 1f18 0A00A0E3 		mov	r0, #10
+ 4802 1f1c 5010A0E3 		mov	r1, #80
+ 4803 1f20 0A20A0E3 		mov	r2, #10
+ 4804 1f24 BC309FE5 		ldr	r3, .L115+16
+ 4805 1f28 FEFFFFEB 		bl	Lcd_DspAscII8x16
+ 528:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10, 100, DARKGRAY, "- Fila 0 termina la partida");
+ 4806              		.loc 1 528 0
+ 4807 1f2c 0A00A0E3 		mov	r0, #10
+ 4808 1f30 6410A0E3 		mov	r1, #100
+ 4809 1f34 0A20A0E3 		mov	r2, #10
+ 4810 1f38 AC309FE5 		ldr	r3, .L115+20
+ 4811 1f3c FEFFFFEB 		bl	Lcd_DspAscII8x16
+ 529:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10, 120, DARKGRAY, "- Se muestran candidatos en");
+ 4812              		.loc 1 529 0
+ 4813 1f40 0A00A0E3 		mov	r0, #10
+ 4814 1f44 7810A0E3 		mov	r1, #120
+ 4815 1f48 0A20A0E3 		mov	r2, #10
+ 4816 1f4c 9C309FE5 		ldr	r3, .L115+24
+ 4817 1f50 FEFFFFEB 		bl	Lcd_DspAscII8x16
+ 530:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10, 140, DARKGRAY, "  celdas vacias");
+ 4818              		.loc 1 530 0
+ 4819 1f54 0A00A0E3 		mov	r0, #10
+ 4820 1f58 8C10A0E3 		mov	r1, #140
+ 4821 1f5c 0A20A0E3 		mov	r2, #10
+ 4822 1f60 8C309FE5 		ldr	r3, .L115+28
+ 4823 1f64 FEFFFFEB 		bl	Lcd_DspAscII8x16
+ 531:../LCD_touch_2025/lcd.c **** 	
+ 532:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(40, 190, BLACK, "Pulse un boton para jugar");
+ 4824              		.loc 1 532 0
+ 4825 1f68 2800A0E3 		mov	r0, #40
+ 4826 1f6c BE10A0E3 		mov	r1, #190
+ 4827 1f70 0F20A0E3 		mov	r2, #15
+ 4828 1f74 7C309FE5 		ldr	r3, .L115+32
+ 4829 1f78 FEFFFFEB 		bl	Lcd_DspAscII8x16
+ 533:../LCD_touch_2025/lcd.c **** 
+ 534:../LCD_touch_2025/lcd.c **** 	Lcd_Dma_Trans();
+ 4830              		.loc 1 534 0
+ 4831 1f7c FEFFFFEB 		bl	Lcd_Dma_Trans
+ 535:../LCD_touch_2025/lcd.c **** 
+ 536:../LCD_touch_2025/lcd.c **** 	/* wait for any button press */
+ 537:../LCD_touch_2025/lcd.c **** 	while( (rPDATG & 0x0f) == 0x0f )
+ 4832              		.loc 1 537 0
+ 4833 1f80 010000EA 		b	.L111
+ 4834              	.L112:
+ 538:../LCD_touch_2025/lcd.c **** 	{
+ 539:../LCD_touch_2025/lcd.c **** 		Delay(10);
+ 4835              		.loc 1 539 0
+ 4836 1f84 0A00A0E3 		mov	r0, #10
+ 4837 1f88 FEFFFFEB 		bl	Delay
+ 4838              	.L111:
+ 537:../LCD_touch_2025/lcd.c **** 	while( (rPDATG & 0x0f) == 0x0f )
+ 4839              		.loc 1 537 0 discriminator 1
+ 4840 1f8c 68309FE5 		ldr	r3, .L115+36
+ 4841 1f90 003093E5 		ldr	r3, [r3, #0]
+ 4842 1f94 0F3003E2 		and	r3, r3, #15
+ 4843 1f98 0F0053E3 		cmp	r3, #15
+ 4844 1f9c F8FFFF0A 		beq	.L112
+ 540:../LCD_touch_2025/lcd.c **** 	}
+ 541:../LCD_touch_2025/lcd.c **** 
+ 542:../LCD_touch_2025/lcd.c **** 	/* Esperar a que se suelte el bot√≥n */
+ 543:../LCD_touch_2025/lcd.c **** 	while( (rPDATG & 0x0f) != 0x0f )
+ 4845              		.loc 1 543 0
+ 4846 1fa0 010000EA 		b	.L113
+ 4847              	.L114:
+ 544:../LCD_touch_2025/lcd.c **** 	{
+ 545:../LCD_touch_2025/lcd.c **** 		Delay(10);
+ 4848              		.loc 1 545 0
+ 4849 1fa4 0A00A0E3 		mov	r0, #10
+ 4850 1fa8 FEFFFFEB 		bl	Delay
+ 4851              	.L113:
+ 543:../LCD_touch_2025/lcd.c **** 	while( (rPDATG & 0x0f) != 0x0f )
+ 4852              		.loc 1 543 0 discriminator 1
+ 4853 1fac 48309FE5 		ldr	r3, .L115+36
+ 4854 1fb0 003093E5 		ldr	r3, [r3, #0]
+ 4855 1fb4 0F3003E2 		and	r3, r3, #15
+ 4856 1fb8 0F0053E3 		cmp	r3, #15
+ 4857 1fbc F8FFFF1A 		bne	.L114
+ 546:../LCD_touch_2025/lcd.c **** 	}
+ 547:../LCD_touch_2025/lcd.c **** 
+ 548:../LCD_touch_2025/lcd.c **** 	/* clear screen before starting the game */
+ 549:../LCD_touch_2025/lcd.c **** 	Lcd_Clr();
+ 4858              		.loc 1 549 0
+ 4859 1fc0 FEFFFFEB 		bl	Lcd_Clr
+ 550:../LCD_touch_2025/lcd.c **** 	Lcd_Active_Clr();
+ 4860              		.loc 1 550 0
+ 4861 1fc4 FEFFFFEB 		bl	Lcd_Active_Clr
+ 551:../LCD_touch_2025/lcd.c **** 	Lcd_Dma_Trans();
+ 4862              		.loc 1 551 0
+ 4863 1fc8 FEFFFFEB 		bl	Lcd_Dma_Trans
+ 552:../LCD_touch_2025/lcd.c **** }
+ 4864              		.loc 1 552 0
+ 4865 1fcc 0CD04BE2 		sub	sp, fp, #12
+ 4866 1fd0 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 4867 1fd4 1EFF2FE1 		bx	lr
+ 4868              	.L116:
+ 4869              		.align	2
+ 4870              	.L115:
+ 4871 1fd8 3F010000 		.word	319
+ 4872 1fdc 00000000 		.word	.LC0
+ 4873 1fe0 08000000 		.word	.LC1
+ 4874 1fe4 18000000 		.word	.LC2
+ 4875 1fe8 3C000000 		.word	.LC3
+ 4876 1fec 50000000 		.word	.LC4
+ 4877 1ff0 6C000000 		.word	.LC5
+ 4878 1ff4 88000000 		.word	.LC6
+ 4879 1ff8 98000000 		.word	.LC7
+ 4880 1ffc 4400D201 		.word	30539844
+ 4881              		.cfi_endproc
+ 4882              	.LFE15:
+ 4884              		.section	.rodata
+ 4885 00b2 0000     		.align	2
+ 4886              	.LC8:
+ 4887 00b4 436F6469 		.ascii	"Codigo del puesto: \000"
+ 4887      676F2064 
+ 4887      656C2070 
+ 4887      75657374 
+ 4887      6F3A2000 
+ 4888              		.text
+ 4889              		.align	2
+ 4890              		.global	Lcd_Test
+ 4892              	Lcd_Test:
+ 4893              	.LFB16:
+ 553:../LCD_touch_2025/lcd.c **** 
+ 554:../LCD_touch_2025/lcd.c **** /*********************************************************************************************
+ 555:../LCD_touch_2025/lcd.c **** * name:		Lcd_Test()
+ 556:../LCD_touch_2025/lcd.c **** * func:		LCD test function
+ 557:../LCD_touch_2025/lcd.c **** * para:		none
+ 558:../LCD_touch_2025/lcd.c **** * ret:		none
+ 559:../LCD_touch_2025/lcd.c **** * modify:
+ 560:../LCD_touch_2025/lcd.c **** * comment:		
+ 561:../LCD_touch_2025/lcd.c **** *********************************************************************************************/
+ 562:../LCD_touch_2025/lcd.c **** void Lcd_Test(void)
+ 563:../LCD_touch_2025/lcd.c **** {
+ 4894              		.loc 1 563 0
+ 4895              		.cfi_startproc
+ 4896              		@ Function supports interworking.
+ 4897              		@ args = 0, pretend = 0, frame = 0
+ 4898              		@ frame_needed = 1, uses_anonymous_args = 0
+ 4899 2000 0DC0A0E1 		mov	ip, sp
+ 4900              	.LCFI32:
+ 4901              		.cfi_def_cfa_register 12
+ 4902 2004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 4903 2008 04B04CE2 		sub	fp, ip, #4
+ 4904              		.cfi_offset 14, -8
+ 4905              		.cfi_offset 13, -12
+ 4906              		.cfi_offset 11, -16
+ 4907              	.LCFI33:
+ 4908              		.cfi_def_cfa 11, 4
+ 4909 200c 08D04DE2 		sub	sp, sp, #8
+ 564:../LCD_touch_2025/lcd.c **** 	/* initial LCD controller */
+ 565:../LCD_touch_2025/lcd.c **** 	Lcd_Init();
+ 4910              		.loc 1 565 0
+ 4911 2010 FEFFFFEB 		bl	Lcd_Init
+ 566:../LCD_touch_2025/lcd.c **** 	/* clear screen */
+ 567:../LCD_touch_2025/lcd.c **** 	Lcd_Clr();
+ 4912              		.loc 1 567 0
+ 4913 2014 FEFFFFEB 		bl	Lcd_Clr
+ 568:../LCD_touch_2025/lcd.c **** 	Lcd_Active_Clr();
+ 4914              		.loc 1 568 0
+ 4915 2018 FEFFFFEB 		bl	Lcd_Active_Clr
+ 569:../LCD_touch_2025/lcd.c **** 
+ 570:../LCD_touch_2025/lcd.c **** 	/* draw rectangle pattern */ 
+ 571:../LCD_touch_2025/lcd.c ****     #ifdef Eng_v // english version
+ 572:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10,0,DARKGRAY,"Embest S3CEV40 ");
+ 573:../LCD_touch_2025/lcd.c **** 	#else
+ 574:../LCD_touch_2025/lcd.c **** //	Lcd_DspHz16(10,0,DARKGRAY,"Ëã±ËììÁâπ‰∏âÊòüÂÆûÈ™åËØÑ‰º∞Êùø");
+ 575:../LCD_touch_2025/lcd.c **** 	#endif
+ 576:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10,20,BLACK,"Codigo del puesto: ");
+ 4916              		.loc 1 576 0
+ 4917 201c 0A00A0E3 		mov	r0, #10
+ 4918 2020 1410A0E3 		mov	r1, #20
+ 4919 2024 0F20A0E3 		mov	r2, #15
+ 4920 2028 A0319FE5 		ldr	r3, .L118
+ 4921 202c FEFFFFEB 		bl	Lcd_DspAscII8x16
+ 577:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(10,40,310,230,14);
+ 4922              		.loc 1 577 0
+ 4923 2030 0E30A0E3 		mov	r3, #14
+ 4924 2034 00308DE5 		str	r3, [sp, #0]
+ 4925 2038 0A00A0E3 		mov	r0, #10
+ 4926 203c 2810A0E3 		mov	r1, #40
+ 4927 2040 8C219FE5 		ldr	r2, .L118+4
+ 4928 2044 E630A0E3 		mov	r3, #230
+ 4929 2048 FEFFFFEB 		bl	Lcd_Draw_Box
+ 578:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(20,45,300,225,13);
+ 4930              		.loc 1 578 0
+ 4931 204c 0D30A0E3 		mov	r3, #13
+ 4932 2050 00308DE5 		str	r3, [sp, #0]
+ 4933 2054 1400A0E3 		mov	r0, #20
+ 4934 2058 2D10A0E3 		mov	r1, #45
+ 4935 205c 4B2FA0E3 		mov	r2, #300
+ 4936 2060 E130A0E3 		mov	r3, #225
+ 4937 2064 FEFFFFEB 		bl	Lcd_Draw_Box
+ 579:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(30,50,290,220,12);
+ 4938              		.loc 1 579 0
+ 4939 2068 0C30A0E3 		mov	r3, #12
+ 4940 206c 00308DE5 		str	r3, [sp, #0]
+ 4941 2070 1E00A0E3 		mov	r0, #30
+ 4942 2074 3210A0E3 		mov	r1, #50
+ 4943 2078 58219FE5 		ldr	r2, .L118+8
+ 4944 207c DC30A0E3 		mov	r3, #220
+ 4945 2080 FEFFFFEB 		bl	Lcd_Draw_Box
+ 580:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(40,55,280,215,11);
+ 4946              		.loc 1 580 0
+ 4947 2084 0B30A0E3 		mov	r3, #11
+ 4948 2088 00308DE5 		str	r3, [sp, #0]
+ 4949 208c 2800A0E3 		mov	r0, #40
+ 4950 2090 3710A0E3 		mov	r1, #55
+ 4951 2094 462FA0E3 		mov	r2, #280
+ 4952 2098 D730A0E3 		mov	r3, #215
+ 4953 209c FEFFFFEB 		bl	Lcd_Draw_Box
+ 581:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(50,60,270,210,10);
+ 4954              		.loc 1 581 0
+ 4955 20a0 0A30A0E3 		mov	r3, #10
+ 4956 20a4 00308DE5 		str	r3, [sp, #0]
+ 4957 20a8 3200A0E3 		mov	r0, #50
+ 4958 20ac 3C10A0E3 		mov	r1, #60
+ 4959 20b0 24219FE5 		ldr	r2, .L118+12
+ 4960 20b4 D230A0E3 		mov	r3, #210
+ 4961 20b8 FEFFFFEB 		bl	Lcd_Draw_Box
+ 582:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(60,65,260,205,9);
+ 4962              		.loc 1 582 0
+ 4963 20bc 0930A0E3 		mov	r3, #9
+ 4964 20c0 00308DE5 		str	r3, [sp, #0]
+ 4965 20c4 3C00A0E3 		mov	r0, #60
+ 4966 20c8 4110A0E3 		mov	r1, #65
+ 4967 20cc 412FA0E3 		mov	r2, #260
+ 4968 20d0 CD30A0E3 		mov	r3, #205
+ 4969 20d4 FEFFFFEB 		bl	Lcd_Draw_Box
+ 583:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(70,70,250,200,8);
+ 4970              		.loc 1 583 0
+ 4971 20d8 0830A0E3 		mov	r3, #8
+ 4972 20dc 00308DE5 		str	r3, [sp, #0]
+ 4973 20e0 4600A0E3 		mov	r0, #70
+ 4974 20e4 4610A0E3 		mov	r1, #70
+ 4975 20e8 FA20A0E3 		mov	r2, #250
+ 4976 20ec C830A0E3 		mov	r3, #200
+ 4977 20f0 FEFFFFEB 		bl	Lcd_Draw_Box
+ 584:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(80,75,240,195,7);
+ 4978              		.loc 1 584 0
+ 4979 20f4 0730A0E3 		mov	r3, #7
+ 4980 20f8 00308DE5 		str	r3, [sp, #0]
+ 4981 20fc 5000A0E3 		mov	r0, #80
+ 4982 2100 4B10A0E3 		mov	r1, #75
+ 4983 2104 F020A0E3 		mov	r2, #240
+ 4984 2108 C330A0E3 		mov	r3, #195
+ 4985 210c FEFFFFEB 		bl	Lcd_Draw_Box
+ 585:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(90,80,230,190,6);
+ 4986              		.loc 1 585 0
+ 4987 2110 0630A0E3 		mov	r3, #6
+ 4988 2114 00308DE5 		str	r3, [sp, #0]
+ 4989 2118 5A00A0E3 		mov	r0, #90
+ 4990 211c 5010A0E3 		mov	r1, #80
+ 4991 2120 E620A0E3 		mov	r2, #230
+ 4992 2124 BE30A0E3 		mov	r3, #190
+ 4993 2128 FEFFFFEB 		bl	Lcd_Draw_Box
+ 586:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(100,85,220,185,5);
+ 4994              		.loc 1 586 0
+ 4995 212c 0530A0E3 		mov	r3, #5
+ 4996 2130 00308DE5 		str	r3, [sp, #0]
+ 4997 2134 6400A0E3 		mov	r0, #100
+ 4998 2138 5510A0E3 		mov	r1, #85
+ 4999 213c DC20A0E3 		mov	r2, #220
+ 5000 2140 B930A0E3 		mov	r3, #185
+ 5001 2144 FEFFFFEB 		bl	Lcd_Draw_Box
+ 587:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(110,90,210,180,4);
+ 5002              		.loc 1 587 0
+ 5003 2148 0430A0E3 		mov	r3, #4
+ 5004 214c 00308DE5 		str	r3, [sp, #0]
+ 5005 2150 6E00A0E3 		mov	r0, #110
+ 5006 2154 5A10A0E3 		mov	r1, #90
+ 5007 2158 D220A0E3 		mov	r2, #210
+ 5008 215c B430A0E3 		mov	r3, #180
+ 5009 2160 FEFFFFEB 		bl	Lcd_Draw_Box
+ 588:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(120,95,200,175,3);
+ 5010              		.loc 1 588 0
+ 5011 2164 0330A0E3 		mov	r3, #3
+ 5012 2168 00308DE5 		str	r3, [sp, #0]
+ 5013 216c 7800A0E3 		mov	r0, #120
+ 5014 2170 5F10A0E3 		mov	r1, #95
+ 5015 2174 C820A0E3 		mov	r2, #200
+ 5016 2178 AF30A0E3 		mov	r3, #175
+ 5017 217c FEFFFFEB 		bl	Lcd_Draw_Box
+ 589:../LCD_touch_2025/lcd.c **** 	Lcd_Draw_Box(130,100,190,170,2);
+ 5018              		.loc 1 589 0
+ 5019 2180 0230A0E3 		mov	r3, #2
+ 5020 2184 00308DE5 		str	r3, [sp, #0]
+ 5021 2188 8200A0E3 		mov	r0, #130
+ 5022 218c 6410A0E3 		mov	r1, #100
+ 5023 2190 BE20A0E3 		mov	r2, #190
+ 5024 2194 AA30A0E3 		mov	r3, #170
+ 5025 2198 FEFFFFEB 		bl	Lcd_Draw_Box
+ 590:../LCD_touch_2025/lcd.c **** 	BitmapView(125,135,Stru_Bitmap_gbMouse);
+ 5026              		.loc 1 590 0
+ 5027 219c 3C309FE5 		ldr	r3, .L118+16
+ 5028 21a0 0D20A0E1 		mov	r2, sp
+ 5029 21a4 081083E2 		add	r1, r3, #8
+ 5030 21a8 030091E8 		ldmia	r1, {r0, r1}
+ 5031 21ac 030082E8 		stmia	r2, {r0, r1}
+ 5032 21b0 0C0093E8 		ldmia	r3, {r2, r3}
+ 5033 21b4 7D00A0E3 		mov	r0, #125
+ 5034 21b8 8710A0E3 		mov	r1, #135
+ 5035 21bc FEFFFFEB 		bl	BitmapView
+ 591:../LCD_touch_2025/lcd.c **** 	Lcd_Dma_Trans();
+ 5036              		.loc 1 591 0
+ 5037 21c0 FEFFFFEB 		bl	Lcd_Dma_Trans
+ 592:../LCD_touch_2025/lcd.c **** 
+ 593:../LCD_touch_2025/lcd.c **** }...
+ 5038              		.loc 1 593 0
+ 5039 21c4 0CD04BE2 		sub	sp, fp, #12
+ 5040 21c8 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 5041 21cc 1EFF2FE1 		bx	lr
+ 5042              	.L119:
+ 5043              		.align	2
+ 5044              	.L118:
+ 5045 21d0 B4000000 		.word	.LC8
+ 5046 21d4 36010000 		.word	310
+ 5047 21d8 22010000 		.word	290
+ 5048 21dc 0E010000 		.word	270
+ 5049 21e0 00000000 		.word	Stru_Bitmap_gbMouse
+ 5050              		.cfi_endproc
+ 5051              	.LFE16:
+ 5053              	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 lcd.c
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2129   .text:00000000 $a
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2132   .text:00000000 Lcd_Init
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2237   .text:00000110 $d
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4602   .text:00001db4 Zdma0Done
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2273   .text:00000194 $a
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2276   .text:00000194 Lcd_Active_Clr
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2326   .text:000001f8 $d
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2330   .text:000001fc $a
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2333   .text:000001fc LCD_GetPixel
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2414   .text:000002cc Lcd_Clr
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2464   .text:00000330 $d
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2469   .text:00000338 $a
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2472   .text:00000338 LcdClrRect
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:2951   .text:00000988 Lcd_Draw_Box
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:3712   .text:0000137c Lcd_Draw_HLine
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:3878   .text:00001584 Lcd_Draw_VLine
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:3016   .text:00000a24 Lcd_Draw_Line
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4056   .text:000017bc Lcd_DisplayString
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4088   .text:000017e8 Lcd_DspAscII8x16
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4337   .text:00001af8 $d
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4341   .text:00001afc $a
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4344   .text:00001afc Lcd_DspAscII6x8
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4494   .text:00001cbc $d
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4498   .text:00001cc0 $a
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4501   .text:00001cc0 ReverseLine
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4596   .data:00000000 ucZdma0Done
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4638   .text:00001dec $d
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4643   .text:00001df4 $a
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4646   .text:00001df4 Lcd_Dma_Trans
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4709   .text:00001e80 $d
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4722   .rodata:00000000 $d
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4726   .text:00001ea4 $a
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4729   .text:00001ea4 Lcd_Test
-C:\Users\jaime\AppData\Local\Temp\ccoOAOrl.s:4882   .text:00002074 $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2129   .text:00000000 $a
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2132   .text:00000000 Lcd_Init
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2237   .text:00000110 $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4602   .text:00001db4 Zdma0Done
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2273   .text:00000194 $a
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2276   .text:00000194 Lcd_Active_Clr
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2326   .text:000001f8 $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2330   .text:000001fc $a
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2333   .text:000001fc LCD_GetPixel
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2414   .text:000002cc Lcd_Clr
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2464   .text:00000330 $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2469   .text:00000338 $a
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2472   .text:00000338 LcdClrRect
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2951   .text:00000988 Lcd_Draw_Box
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:3712   .text:0000137c Lcd_Draw_HLine
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:3878   .text:00001584 Lcd_Draw_VLine
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:3016   .text:00000a24 Lcd_Draw_Line
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4056   .text:000017bc Lcd_DisplayString
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4088   .text:000017e8 Lcd_DspAscII8x16
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4337   .text:00001af8 $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4341   .text:00001afc $a
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4344   .text:00001afc Lcd_DspAscII6x8
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4494   .text:00001cbc $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4498   .text:00001cc0 $a
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4501   .text:00001cc0 ReverseLine
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4596   .data:00000000 ucZdma0Done
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4638   .text:00001dec $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4643   .text:00001df4 $a
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4646   .text:00001df4 Lcd_Dma_Trans
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4709   .text:00001e80 $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4722   .rodata:00000000 $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4747   .text:00001ea4 $a
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4750   .text:00001ea4 Lcd_mostrar_pantalla_bienvenida
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4871   .text:00001fd8 $d
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4889   .text:00002000 $a
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4892   .text:00002000 Lcd_Test
+C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:5045   .text:000021d0 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS
@@ -3389,5 +3632,6 @@ __aeabi_idiv
 strlen
 g_auc_Ascii8x16
 g_auc_Ascii6x8
+Delay
 BitmapView
 Stru_Bitmap_gbMouse
