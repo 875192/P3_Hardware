@@ -13,7 +13,7 @@
 
 	char yn;
 /*--- function declare ---*/
-void Main(void);
+void MainLCD(void);
 
 /*--- extern function ---*/
 extern void Lcd_Test();
@@ -27,7 +27,7 @@ extern void Lcd_Test();
 * modify:
 * comment:		
 *********************************************************************************************/
-void Main(void)
+void MainLCD(void)
 {
     sys_init();        /* Initial 44B0X's Interrupt, Port and UART */
     // CAMBIARRR _Link();           /* Print Misc info */

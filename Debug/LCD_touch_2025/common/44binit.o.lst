@@ -581,7 +581,7 @@
  299 04e4 C000C0E3 		BIC	r0, r0, #NOINT /* enable interrupt */
  300 04e8 00F02FE1 		MSR	CPSR_cxsf, r0
  301              		/* jump to main() */
- 302 04ec FEFFFFEB 	   	BL	Main
+ 302 04ec FEFFFFEB 	   	BL	MainLCD
  303 04f0 FEFFFFEA 	   	B   .	    
  304              	
  305              	#;****************************************************
@@ -945,4 +945,4 @@ Image_RO_Limit
 Image_RW_Base
 Image_ZI_Base
 Image_ZI_Limit
-Main
+MainLCD

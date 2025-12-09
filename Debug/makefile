@@ -10,6 +10,7 @@ RM := cs-rm -rf
 -include sources.mk
 -include LCD_touch_2025/common/subdir.mk
 -include LCD_touch_2025/subdir.mk
+-include Archivos_P2/subdir.mk
 -include subdir.mk
 -include objects.mk
 

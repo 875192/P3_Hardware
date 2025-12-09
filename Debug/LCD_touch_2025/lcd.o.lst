@@ -3160,27 +3160,27 @@
  4733      203900
  4734 004f 00       		.align	2
  4735              	.LC4:
- 4736 0050 2D204669 		.ascii	"- Fila 0 termina la partida\000"
- 4736      6C612030 
- 4736      20746572 
- 4736      6D696E61 
- 4736      206C6120 
- 4737              		.align	2
+ 4736 0050 2D205661 		.ascii	"- Valor 0 borra valor de la celda\000"
+ 4736      6C6F7220 
+ 4736      3020626F 
+ 4736      72726120 
+ 4736      76616C6F 
+ 4737 0072 0000     		.align	2
  4738              	.LC5:
- 4739 006c 2D205365 		.ascii	"- Se muestran candidatos en\000"
+ 4739 0074 2D205365 		.ascii	"- Se muestran candidatos en\000"
  4739      206D7565 
  4739      73747261 
  4739      6E206361 
  4739      6E646964 
  4740              		.align	2
  4741              	.LC6:
- 4742 0088 20206365 		.ascii	"  celdas vacias\000"
+ 4742 0090 20206365 		.ascii	"  celdas vacias\000"
  4742      6C646173 
  4742      20766163 
  4742      69617300 
  4743              		.align	2
  4744              	.LC7:
- 4745 0098 50756C73 		.ascii	"Pulse un boton para jugar\000"
+ 4745 00a0 50756C73 		.ascii	"Pulse un boton para jugar\000"
  4745      6520756E 
  4745      20626F74 
  4745      6F6E2070 
@@ -3269,7 +3269,7 @@
  4803 1f20 0A20A0E3 		mov	r2, #10
  4804 1f24 BC309FE5 		ldr	r3, .L115+16
  4805 1f28 FEFFFFEB 		bl	Lcd_DspAscII8x16
- 528:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10, 100, DARKGRAY, "- Fila 0 termina la partida");
+ 528:../LCD_touch_2025/lcd.c **** 	Lcd_DspAscII8x16(10, 100, DARKGRAY, "- Valor 0 borra valor de la celda");
  4806              		.loc 1 528 0
  4807 1f2c 0A00A0E3 		mov	r0, #10
  4808 1f30 6410A0E3 		mov	r1, #100
@@ -3367,16 +3367,16 @@
  4874 1fe4 18000000 		.word	.LC2
  4875 1fe8 3C000000 		.word	.LC3
  4876 1fec 50000000 		.word	.LC4
- 4877 1ff0 6C000000 		.word	.LC5
- 4878 1ff4 88000000 		.word	.LC6
- 4879 1ff8 98000000 		.word	.LC7
+ 4877 1ff0 74000000 		.word	.LC5
+ 4878 1ff4 90000000 		.word	.LC6
+ 4879 1ff8 A0000000 		.word	.LC7
  4880 1ffc 4400D201 		.word	30539844
  4881              		.cfi_endproc
  4882              	.LFE15:
  4884              		.section	.rodata
- 4885 00b2 0000     		.align	2
+ 4885 00ba 0000     		.align	2
  4886              	.LC8:
- 4887 00b4 436F6469 		.ascii	"Codigo del puesto: \000"
+ 4887 00bc 436F6469 		.ascii	"Codigo del puesto: \000"
  4887      676F2064 
  4887      656C2070 
  4887      75657374 
@@ -3578,7 +3578,7 @@
  5042              	.L119:
  5043              		.align	2
  5044              	.L118:
- 5045 21d0 B4000000 		.word	.LC8
+ 5045 21d0 BC000000 		.word	.LC8
  5046 21d4 36010000 		.word	310
  5047 21d8 22010000 		.word	290
  5048 21dc 0E010000 		.word	270
@@ -3588,43 +3588,43 @@
  5053              	.Letext0:
 DEFINED SYMBOLS
                             *ABS*:00000000 lcd.c
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2129   .text:00000000 $a
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2132   .text:00000000 Lcd_Init
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2237   .text:00000110 $d
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4602   .text:00001db4 Zdma0Done
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2273   .text:00000194 $a
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2276   .text:00000194 Lcd_Active_Clr
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2326   .text:000001f8 $d
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2330   .text:000001fc $a
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2333   .text:000001fc LCD_GetPixel
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2414   .text:000002cc Lcd_Clr
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2464   .text:00000330 $d
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2469   .text:00000338 $a
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2472   .text:00000338 LcdClrRect
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:2951   .text:00000988 Lcd_Draw_Box
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:3712   .text:0000137c Lcd_Draw_HLine
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:3878   .text:00001584 Lcd_Draw_VLine
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:3016   .text:00000a24 Lcd_Draw_Line
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4056   .text:000017bc Lcd_DisplayString
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4088   .text:000017e8 Lcd_DspAscII8x16
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4337   .text:00001af8 $d
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4341   .text:00001afc $a
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4344   .text:00001afc Lcd_DspAscII6x8
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4494   .text:00001cbc $d
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4498   .text:00001cc0 $a
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4501   .text:00001cc0 ReverseLine
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4596   .data:00000000 ucZdma0Done
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4638   .text:00001dec $d
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4643   .text:00001df4 $a
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4646   .text:00001df4 Lcd_Dma_Trans
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4709   .text:00001e80 $d
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4722   .rodata:00000000 $d
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4747   .text:00001ea4 $a
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4750   .text:00001ea4 Lcd_mostrar_pantalla_bienvenida
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4871   .text:00001fd8 $d
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4889   .text:00002000 $a
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:4892   .text:00002000 Lcd_Test
-C:\Users\jaime\AppData\Local\Temp\ccxbDu0q.s:5045   .text:000021d0 $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2129   .text:00000000 $a
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2132   .text:00000000 Lcd_Init
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2237   .text:00000110 $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4602   .text:00001db4 Zdma0Done
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2273   .text:00000194 $a
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2276   .text:00000194 Lcd_Active_Clr
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2326   .text:000001f8 $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2330   .text:000001fc $a
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2333   .text:000001fc LCD_GetPixel
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2414   .text:000002cc Lcd_Clr
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2464   .text:00000330 $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2469   .text:00000338 $a
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2472   .text:00000338 LcdClrRect
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:2951   .text:00000988 Lcd_Draw_Box
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:3712   .text:0000137c Lcd_Draw_HLine
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:3878   .text:00001584 Lcd_Draw_VLine
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:3016   .text:00000a24 Lcd_Draw_Line
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4056   .text:000017bc Lcd_DisplayString
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4088   .text:000017e8 Lcd_DspAscII8x16
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4337   .text:00001af8 $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4341   .text:00001afc $a
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4344   .text:00001afc Lcd_DspAscII6x8
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4494   .text:00001cbc $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4498   .text:00001cc0 $a
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4501   .text:00001cc0 ReverseLine
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4596   .data:00000000 ucZdma0Done
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4638   .text:00001dec $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4643   .text:00001df4 $a
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4646   .text:00001df4 Lcd_Dma_Trans
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4709   .text:00001e80 $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4722   .rodata:00000000 $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4747   .text:00001ea4 $a
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4750   .text:00001ea4 Lcd_mostrar_pantalla_bienvenida
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4871   .text:00001fd8 $d
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4889   .text:00002000 $a
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:4892   .text:00002000 Lcd_Test
+C:\Users\jaime\AppData\Local\Temp\cccp3eAN.s:5045   .text:000021d0 $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

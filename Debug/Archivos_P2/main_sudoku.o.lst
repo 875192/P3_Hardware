@@ -8,9 +8,9 @@
    8              		.eabi_attribute 26, 1
    9              		.eabi_attribute 30, 6
   10              		.eabi_attribute 18, 4
-  11              		.file	"main.c"
+  11              		.file	"main_sudoku.c"
   21              	.Ltext0:
-  22              		.file 1 "../Archivos_P2/main.c"
+  22              		.file 1 "../Archivos_P2/main_sudoku.c"
  2783              		.align	5
  2786              	cuadricula_C_C:
  2787 0000 1500     		.short	21
@@ -905,36 +905,36 @@
  3686              		.global	Main
  3688              	Main:
  3689              	.LFB7:
-   1:../Archivos_P2/main.c **** /*********************************************************************************************
-   2:../Archivos_P2/main.c **** * Fichero:	main.c
-   3:../Archivos_P2/main.c **** * Autor:    
-   4:../Archivos_P2/main.c **** * Descrip:	punto de entrada de C
-   5:../Archivos_P2/main.c **** * Version:      <P4-ARM.timer-leds>
-   6:../Archivos_P2/main.c **** *********************************************************************************************/
-   7:../Archivos_P2/main.c **** 
-   8:../Archivos_P2/main.c **** /*--- ficheros de cabecera ---*/
-   9:../Archivos_P2/main.c **** #include "8led.h"
-  10:../Archivos_P2/main.c **** #include "button.h"
-  11:../Archivos_P2/main.c **** #include "led.h"
-  12:../Archivos_P2/main.c **** #include "timer1.h"
-  13:../Archivos_P2/main.c **** #include "timer2.h"
-  14:../Archivos_P2/main.c **** #include "timer3.h"
-  15:../Archivos_P2/main.c **** #include "cola.h"
-  16:../Archivos_P2/main.c **** #include "44blib.h"
-  17:../Archivos_P2/main.c **** #include "44b.h"
-  18:../Archivos_P2/main.c **** #include "sudoku_2025.h"
-  19:../Archivos_P2/main.c **** 
-  20:../Archivos_P2/main.c **** /*--- variables globales ---*/
-  21:../Archivos_P2/main.c **** #include "tableros.h"
-  22:../Archivos_P2/main.c **** 
-  23:../Archivos_P2/main.c **** /* Apuntar a una de las cuadrículas disponibles */
-  24:../Archivos_P2/main.c **** CELDA (*cuadricula)[NUM_COLUMNAS] = cuadricula_ARM_ARM; // CAMBIAR SEGUN LA VERSIÓN A PROBAR
-  25:../Archivos_P2/main.c **** int celdas_vacias = 0;
-  26:../Archivos_P2/main.c **** 
-  27:../Archivos_P2/main.c **** 
-  28:../Archivos_P2/main.c **** /*--- codigo de funciones ---*/
-  29:../Archivos_P2/main.c **** void Main(void)
-  30:../Archivos_P2/main.c **** {
+   1:../Archivos_P2/main_sudoku.c **** /*********************************************************************************************
+   2:../Archivos_P2/main_sudoku.c **** * Fichero:	main.c
+   3:../Archivos_P2/main_sudoku.c **** * Autor:    
+   4:../Archivos_P2/main_sudoku.c **** * Descrip:	punto de entrada de C
+   5:../Archivos_P2/main_sudoku.c **** * Version:      <P4-ARM.timer-leds>
+   6:../Archivos_P2/main_sudoku.c **** *********************************************************************************************/
+   7:../Archivos_P2/main_sudoku.c **** 
+   8:../Archivos_P2/main_sudoku.c **** /*--- ficheros de cabecera ---*/
+   9:../Archivos_P2/main_sudoku.c **** #include "8led.h"
+  10:../Archivos_P2/main_sudoku.c **** #include "button.h"
+  11:../Archivos_P2/main_sudoku.c **** #include "led.h"
+  12:../Archivos_P2/main_sudoku.c **** #include "timer1.h"
+  13:../Archivos_P2/main_sudoku.c **** #include "timer2.h"
+  14:../Archivos_P2/main_sudoku.c **** #include "timer3.h"
+  15:../Archivos_P2/main_sudoku.c **** #include "cola.h"
+  16:../Archivos_P2/main_sudoku.c **** #include "44blib.h"
+  17:../Archivos_P2/main_sudoku.c **** #include "44b.h"
+  18:../Archivos_P2/main_sudoku.c **** #include "sudoku_2025.h"
+  19:../Archivos_P2/main_sudoku.c **** 
+  20:../Archivos_P2/main_sudoku.c **** /*--- variables globales ---*/
+  21:../Archivos_P2/main_sudoku.c **** #include "tableros.h"
+  22:../Archivos_P2/main_sudoku.c **** 
+  23:../Archivos_P2/main_sudoku.c **** /* Apuntar a una de las cuadrículas disponibles */
+  24:../Archivos_P2/main_sudoku.c **** CELDA (*cuadricula)[NUM_COLUMNAS] = cuadricula_ARM_ARM; // CAMBIAR SEGUN LA VERSIÓN A PROBAR
+  25:../Archivos_P2/main_sudoku.c **** int celdas_vacias = 0;
+  26:../Archivos_P2/main_sudoku.c **** 
+  27:../Archivos_P2/main_sudoku.c **** 
+  28:../Archivos_P2/main_sudoku.c **** /*--- codigo de funciones ---*/
+  29:../Archivos_P2/main_sudoku.c **** void Main(void)
+  30:../Archivos_P2/main_sudoku.c **** {
  3690              		.loc 1 30 0
  3691              		.cfi_startproc
  3692              		@ Function supports interworking.
@@ -951,49 +951,49 @@
  3703              	.LCFI1:
  3704              		.cfi_def_cfa 11, 4
  3705 000c 08D04DE2 		sub	sp, sp, #8
-  31:../Archivos_P2/main.c **** 	
-  32:../Archivos_P2/main.c **** 	/* Variables para observar la cola durante la depuración */
-  33:../Archivos_P2/main.c **** 	ColaDebug* p_cola;              // Puntero a la estructura completa de la cola
-  34:../Archivos_P2/main.c **** 	
-  35:../Archivos_P2/main.c **** 	/* Inicializa controladores */
-  36:../Archivos_P2/main.c **** 	sys_init();         // Inicializacion de la placa, interrupciones y puertos
+  31:../Archivos_P2/main_sudoku.c **** 	
+  32:../Archivos_P2/main_sudoku.c **** 	/* Variables para observar la cola durante la depuración */
+  33:../Archivos_P2/main_sudoku.c **** 	ColaDebug* p_cola;              // Puntero a la estructura completa de la cola
+  34:../Archivos_P2/main_sudoku.c **** 	
+  35:../Archivos_P2/main_sudoku.c **** 	/* Inicializa controladores */
+  36:../Archivos_P2/main_sudoku.c **** 	sys_init();         // Inicializacion de la placa, interrupciones y puertos
  3706              		.loc 1 36 0
  3707 0010 FEFFFFEB 		bl	sys_init
-  37:../Archivos_P2/main.c **** 	timer2_init();      // Inicializacion del timer2 para medicion de tiempo
+  37:../Archivos_P2/main_sudoku.c **** 	timer2_init();      // Inicializacion del timer2 para medicion de tiempo
  3708              		.loc 1 37 0
  3709 0014 FEFFFFEB 		bl	timer2_init
-  38:../Archivos_P2/main.c **** 	timer1_init();      // Inicializacion del timer1 para latido (heartbeat) - Paso 6
+  38:../Archivos_P2/main_sudoku.c **** 	timer1_init();      // Inicializacion del timer1 para latido (heartbeat) - Paso 6
  3710              		.loc 1 38 0
  3711 0018 FEFFFFEB 		bl	timer1_init
-  39:../Archivos_P2/main.c **** 	cola_init();        // Inicializacion de la cola de depuracion (Paso 4)
+  39:../Archivos_P2/main_sudoku.c **** 	cola_init();        // Inicializacion de la cola de depuracion (Paso 4)
  3712              		.loc 1 39 0
  3713 001c FEFFFFEB 		bl	cola_init
-  40:../Archivos_P2/main.c **** 	Eint4567_init();	// inicializamos los pulsadores. Cada vez que se pulse se ver� reflejado en el 
+  40:../Archivos_P2/main_sudoku.c **** 	Eint4567_init();	// inicializamos los pulsadores. Cada vez que se pulse se ver� reflejado en el 
  3714              		.loc 1 40 0
  3715 0020 FEFFFFEB 		bl	Eint4567_init
-  41:../Archivos_P2/main.c **** 	D8Led_init();       // inicializamos el 8led
+  41:../Archivos_P2/main_sudoku.c **** 	D8Led_init();       // inicializamos el 8led
  3716              		.loc 1 41 0
  3717 0024 FEFFFFEB 		bl	D8Led_init
-  42:../Archivos_P2/main.c **** 
-  43:../Archivos_P2/main.c **** 	/* Valor inicial de los leds */
-  44:../Archivos_P2/main.c **** 	leds_off();
+  42:../Archivos_P2/main_sudoku.c **** 
+  43:../Archivos_P2/main_sudoku.c **** 	/* Valor inicial de los leds */
+  44:../Archivos_P2/main_sudoku.c **** 	leds_off();
  3718              		.loc 1 44 0
  3719 0028 FEFFFFEB 		bl	leds_off
-  45:../Archivos_P2/main.c **** 	
-  46:../Archivos_P2/main.c **** 	/* Apuntar a la cola para poder observarla en el depurador */
-  47:../Archivos_P2/main.c **** 	p_cola = cola_global;
+  45:../Archivos_P2/main_sudoku.c **** 	
+  46:../Archivos_P2/main_sudoku.c **** 	/* Apuntar a la cola para poder observarla en el depurador */
+  47:../Archivos_P2/main_sudoku.c **** 	p_cola = cola_global;
  3720              		.loc 1 47 0
  3721 002c 08309FE5 		ldr	r3, .L3
  3722 0030 003093E5 		ldr	r3, [r3, #0]
  3723 0034 10300BE5 		str	r3, [fp, #-16]
  3724              	.L2:
-  48:../Archivos_P2/main.c **** 	
-  49:../Archivos_P2/main.c **** 	/* Bucle principal */
-  50:../Archivos_P2/main.c **** 	while (1)
-  51:../Archivos_P2/main.c **** 	{
-  52:../Archivos_P2/main.c **** 		/* El latido (LED2 parpadeando) se gestiona automáticamente por timer1 */
-  53:../Archivos_P2/main.c **** 		/* El programa está vivo mientras el LED2 parpadee a 6 Hz */
-  54:../Archivos_P2/main.c **** 	}
+  48:../Archivos_P2/main_sudoku.c **** 	
+  49:../Archivos_P2/main_sudoku.c **** 	/* Bucle principal */
+  50:../Archivos_P2/main_sudoku.c **** 	while (1)
+  51:../Archivos_P2/main_sudoku.c **** 	{
+  52:../Archivos_P2/main_sudoku.c **** 		/* El latido (LED2 parpadeando) se gestiona automáticamente por timer1 */
+  53:../Archivos_P2/main_sudoku.c **** 		/* El programa está vivo mientras el LED2 parpadee a 6 Hz */
+  54:../Archivos_P2/main_sudoku.c **** 	}
  3725              		.loc 1 54 0 discriminator 1
  3726 0038 FEFFFFEA 		b	.L2
  3727              	.L4:
@@ -1004,20 +1004,20 @@
  3732              	.LFE7:
  3734              	.Letext0:
 DEFINED SYMBOLS
-                            *ABS*:00000000 main.c
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:2783   .data:00000000 $d
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:2786   .data:00000000 cuadricula_C_C
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:2934   .data:00000120 cuadricula_C_ARM
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3082   .data:00000240 cuadricula_ARM_C
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3230   .data:00000360 cuadricula_ARM_ARM
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3378   .data:00000480 cuadricula_ARM_ARM_ALL
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3526   .data:000005a0 solucion
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3675   .data:000006c0 cuadricula
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3682   .bss:00000000 celdas_vacias
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3679   .bss:00000000 $d
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3685   .text:00000000 $a
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3688   .text:00000000 Main
-C:\Users\jaime\AppData\Local\Temp\ccVsh6OM.s:3730   .text:0000003c $d
+                            *ABS*:00000000 main_sudoku.c
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:2783   .data:00000000 $d
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:2786   .data:00000000 cuadricula_C_C
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:2934   .data:00000120 cuadricula_C_ARM
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3082   .data:00000240 cuadricula_ARM_C
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3230   .data:00000360 cuadricula_ARM_ARM
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3378   .data:00000480 cuadricula_ARM_ARM_ALL
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3526   .data:000005a0 solucion
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3675   .data:000006c0 cuadricula
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3682   .bss:00000000 celdas_vacias
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3679   .bss:00000000 $d
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3685   .text:00000000 $a
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3688   .text:00000000 Main
+C:\Users\jaime\AppData\Local\Temp\ccTsAFKQ.s:3730   .text:0000003c $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

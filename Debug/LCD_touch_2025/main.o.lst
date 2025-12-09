@@ -12,8 +12,8 @@
   21              	.Ltext0:
   22              		.file 1 "../LCD_touch_2025/main.c"
  2111              		.align	2
- 2112              		.global	Main
- 2114              	Main:
+ 2112              		.global	MainLCD
+ 2114              	MainLCD:
  2115              	.LFB0:
    1:../LCD_touch_2025/main.c **** /*********************************************************************************************
    2:../LCD_touch_2025/main.c **** * File	main.c
@@ -30,7 +30,7 @@
   13:../LCD_touch_2025/main.c **** 
   14:../LCD_touch_2025/main.c **** 	char yn;
   15:../LCD_touch_2025/main.c **** /*--- function declare ---*/
-  16:../LCD_touch_2025/main.c **** void Main(void);
+  16:../LCD_touch_2025/main.c **** void MainLCD(void);
   17:../LCD_touch_2025/main.c **** 
   18:../LCD_touch_2025/main.c **** /*--- extern function ---*/
   19:../LCD_touch_2025/main.c **** extern void Lcd_Test();
@@ -44,7 +44,7 @@
   27:../LCD_touch_2025/main.c **** * modify:
   28:../LCD_touch_2025/main.c **** * comment:		
   29:../LCD_touch_2025/main.c **** *********************************************************************************************/
-  30:../LCD_touch_2025/main.c **** void Main(void)
+  30:../LCD_touch_2025/main.c **** void MainLCD(void)
   31:../LCD_touch_2025/main.c **** {
  2116              		.loc 1 31 0
  2117              		.cfi_startproc
@@ -118,9 +118,9 @@ DEFINED SYMBOLS
                             *COM*:00000004 Xmin
                             *COM*:00000004 Ymin
                             *COM*:00000001 yn
-C:\Users\jaime\AppData\Local\Temp\ccDEhqCh.s:2111   .text:00000000 $a
-C:\Users\jaime\AppData\Local\Temp\ccDEhqCh.s:2114   .text:00000000 Main
-C:\Users\jaime\AppData\Local\Temp\ccDEhqCh.s:2155   .text:0000003c $d
+C:\Users\jaime\AppData\Local\Temp\cc7rToSA.s:2111   .text:00000000 $a
+C:\Users\jaime\AppData\Local\Temp\cc7rToSA.s:2114   .text:00000000 MainLCD
+C:\Users\jaime\AppData\Local\Temp\cc7rToSA.s:2155   .text:0000003c $d
                      .debug_frame:00000010 $d
 
 UNDEFINED SYMBOLS

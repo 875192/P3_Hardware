@@ -8,7 +8,7 @@ C_SRCS += \
 ../Archivos_P2/button.c \
 ../Archivos_P2/cola.c \
 ../Archivos_P2/led.c \
-../Archivos_P2/main.c \
+../Archivos_P2/main_sudoku.c \
 ../Archivos_P2/sudoku_2025.c \
 ../Archivos_P2/timer.c \
 ../Archivos_P2/timer1.c \
@@ -24,7 +24,7 @@ OBJS += \
 ./Archivos_P2/cola.o \
 ./Archivos_P2/init_b.o \
 ./Archivos_P2/led.o \
-./Archivos_P2/main.o \
+./Archivos_P2/main_sudoku.o \
 ./Archivos_P2/sudoku_2025.o \
 ./Archivos_P2/timer.o \
 ./Archivos_P2/timer1.o \
@@ -36,7 +36,7 @@ C_DEPS += \
 ./Archivos_P2/button.d \
 ./Archivos_P2/cola.d \
 ./Archivos_P2/led.d \
-./Archivos_P2/main.d \
+./Archivos_P2/main_sudoku.d \
 ./Archivos_P2/sudoku_2025.d \
 ./Archivos_P2/timer.d \
 ./Archivos_P2/timer1.d \

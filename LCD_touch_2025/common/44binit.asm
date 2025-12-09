@@ -299,7 +299,7 @@ F2:
 	BIC	r0, r0, #NOINT /* enable interrupt */
 	MSR	CPSR_cxsf, r0
 	/* jump to main() */
-   	BL	Main
+   	BL	MainLCD
    	B   .	    
 
 #;****************************************************

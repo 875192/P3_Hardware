@@ -525,7 +525,7 @@ void Lcd_mostrar_pantalla_bienvenida(void)
 	Lcd_DspAscII8x16(10, 40, BLACK, "INSTRUCCIONES:");
 	Lcd_DspAscII8x16(10, 60, DARKGRAY, "- Introduce fila, columna y valor");
 	Lcd_DspAscII8x16(10, 80, DARKGRAY, "- Valores de 1 a 9");
-	Lcd_DspAscII8x16(10, 100, DARKGRAY, "- Fila 0 termina la partida");
+	Lcd_DspAscII8x16(10, 100, DARKGRAY, "- Valor 0 borra valor de la celda");
 	Lcd_DspAscII8x16(10, 120, DARKGRAY, "- Se muestran candidatos en");
 	Lcd_DspAscII8x16(10, 140, DARKGRAY, "  celdas vacias");
 	

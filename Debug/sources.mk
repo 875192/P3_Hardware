@@ -21,4 +21,5 @@ S_UPPER_DEPS :=
 SUBDIRS := \
 LCD_touch_2025 \
 LCD_touch_2025/common \
+Archivos_P2 \
 
