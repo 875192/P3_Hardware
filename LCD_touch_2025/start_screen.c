@@ -9,6 +9,17 @@
  * If your display driver uses different names, replace the calls below accordingly.
  */
 
+/*
+ * Weak fallback implementation so the linker has a default symbol even when
+ * the board-specific button driver is not linked. Platforms that provide
+ * their own input routine can override this symbol with a real implementation.
+ */
+__attribute__((weak)) unsigned int buttons_read(void)
+{
+    /* No buttons detected by default. */
+    return 0U;
+}
+
 /* Helper to draw horizontally centered ASCII text on the current LCD buffer. */
 static void draw_centered_text(INT16U y, const char *text)
 {
