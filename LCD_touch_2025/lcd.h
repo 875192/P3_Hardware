@@ -142,6 +142,7 @@ void Lcd_DspAscII8x16(INT16U x0, INT16U y0, INT8U ForeColor, INT8U *s);
 void Lcd_DspHz16(INT16U x0, INT16U y0, INT8U ForeColor, INT8U *s);
 void ReverseLine(INT32U ulHeight, INT32U ulY);
 INT8U LCD_GetPixel(INT16U usX, INT16U usY);
+void Lcd_Mostrar_Pantalla_Inicial(void);
 
 
 #ifdef __cplusplus

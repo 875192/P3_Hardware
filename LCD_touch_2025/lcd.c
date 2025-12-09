@@ -1,7 +1,7 @@
 /*********************************************************************************************
 * Fichero:	lcd.c
 * Autor:	
-* Descrip:	funciones de visualización y control LCD
+* Descrip:	funciones de visualizaciÊ¢ü y control LCD
 * Version:	<P6-ARM>
 *********************************************************************************************/
 
@@ -12,7 +12,7 @@
 #include "lcd.h"
 #include "Bmp.h"
 
-/*--- definición de macros ---*/
+/*--- definiciÊ¢ü de macros ---*/
 #define DMA_Byte  (0)
 #define DMA_HW    (1)
 #define DMA_Word  (2)
@@ -23,7 +23,7 @@ extern INT8U g_auc_Ascii8x16[];
 extern INT8U g_auc_Ascii6x8[];
 extern STRU_BITMAP Stru_Bitmap_gbMouse;
 
-/*--- código de la función ---*/
+/*--- cÊ¢îigo de la funciÊ¢ü ---*/
 void Lcd_Init(void)
 {       
 	rDITHMODE=0x1223a;
@@ -509,6 +509,44 @@ void Lcd_Dma_Trans(void)
 * modify:
 * comment:		
 *********************************************************************************************/
+/*********************************************************************************************
+* name:         Lcd_Mostrar_Pantalla_Inicial
+* func:         muestra la pantalla inicial con instrucciones y espera pulsacin
+* para:         ninguno
+* ret:          none
+* modify:
+* comment:
+*********************************************************************************************/
+void Lcd_Mostrar_Pantalla_Inicial(void)
+{
+        /* initial LCD controller */
+        Lcd_Init();
+        /* clear screen */
+        Lcd_Clr();
+        Lcd_Active_Clr();
+        LcdClrRect(0, 0, LCD_XSIZE - 1, LCD_YSIZE - 1, WHITE);
+
+        /* draw instructions */
+        Lcd_DspAscII8x16(20, 20, BLACK, "Sudoku - Instrucciones:");
+        Lcd_DspAscII8x16(20, 50, BLACK, "Introduce jugadas: fila,columna,valor.");
+        Lcd_DspAscII8x16(20, 70, BLACK, "Valores de 1-9 en cada posicion.");
+        Lcd_DspAscII8x16(20, 90, BLACK, "Fila 0 termina la partida en curso.");
+        Lcd_DspAscII8x16(20, 200, BLACK, "Pulse un botn para jugar");
+
+        Lcd_Dma_Trans();
+
+        /* wait for any button press */
+        while( (rPDATG & 0x0f) == 0x0f )
+        {
+                Delay(10);
+        }
+
+        /* clear screen before starting the game */
+        Lcd_Clr();
+        Lcd_Active_Clr();
+        Lcd_Dma_Trans();
+}
+
 void Lcd_Test(void)
 {
 	/* initial LCD controller */
@@ -521,7 +559,7 @@ void Lcd_Test(void)
     #ifdef Eng_v // english version
 	Lcd_DspAscII8x16(10,0,DARKGRAY,"Embest S3CEV40 ");
 	#else
-//	Lcd_DspHz16(10,0,DARKGRAY,"”¢›ÌÃÿ»˝–« µ—È∆¿π¿∞Â");
+//	Lcd_DspHz16(10,0,DARKGRAY,"Ëã±ËììÁâπ‰∏âÊòüÂÆûÈ™åËØÑ‰º∞Êùø");
 	#endif
 	Lcd_DspAscII8x16(10,20,BLACK,"Codigo del puesto: ");
 	Lcd_Draw_Box(10,40,310,230,14);
