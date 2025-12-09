@@ -1,0 +1,126 @@
+   1              		.cpu arm7tdmi
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.file	"main.c"
+  21              	.Ltext0:
+  22              		.file 1 "../LCD_touch_2025/main.c"
+ 1968              		.align	2
+ 1969              		.global	Main
+ 1971              	Main:
+ 1972              	.LFB0:
+   1:../LCD_touch_2025/main.c **** /*********************************************************************************************
+   2:../LCD_touch_2025/main.c **** * File	main.c
+   3:../LCD_touch_2025/main.c **** * Author: embest
+   4:../LCD_touch_2025/main.c **** * Description: main entry
+   5:../LCD_touch_2025/main.c **** * History:	
+   6:../LCD_touch_2025/main.c **** *********************************************************************************************/
+   7:../LCD_touch_2025/main.c **** 
+   8:../LCD_touch_2025/main.c **** /*--- include files ---*/
+   9:../LCD_touch_2025/main.c **** #include "44blib.h"
+  10:../LCD_touch_2025/main.c **** #include "44b.h"
+  11:../LCD_touch_2025/main.c **** #include "tp.h"
+  12:../LCD_touch_2025/main.c **** 
+  13:../LCD_touch_2025/main.c **** 	char yn;
+  14:../LCD_touch_2025/main.c **** /*--- function declare ---*/
+  15:../LCD_touch_2025/main.c **** void Main(void);
+  16:../LCD_touch_2025/main.c **** 
+  17:../LCD_touch_2025/main.c **** /*--- extern function ---*/
+  18:../LCD_touch_2025/main.c **** extern void Lcd_Test();
+  19:../LCD_touch_2025/main.c **** 
+  20:../LCD_touch_2025/main.c **** /*--- function code ---*/
+  21:../LCD_touch_2025/main.c **** /*********************************************************************************************
+  22:../LCD_touch_2025/main.c **** * name:		main
+  23:../LCD_touch_2025/main.c **** * func:		c code entry
+  24:../LCD_touch_2025/main.c **** * para:		none
+  25:../LCD_touch_2025/main.c **** * ret:		none
+  26:../LCD_touch_2025/main.c **** * modify:
+  27:../LCD_touch_2025/main.c **** * comment:		
+  28:../LCD_touch_2025/main.c **** *********************************************************************************************/
+  29:../LCD_touch_2025/main.c **** void Main(void)
+  30:../LCD_touch_2025/main.c **** {
+ 1973              		.loc 1 30 0
+ 1974              		.cfi_startproc
+ 1975              		@ Function supports interworking.
+ 1976              		@ args = 0, pretend = 0, frame = 0
+ 1977              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1978 0000 0DC0A0E1 		mov	ip, sp
+ 1979              	.LCFI0:
+ 1980              		.cfi_def_cfa_register 12
+ 1981 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 1982 0008 04B04CE2 		sub	fp, ip, #4
+ 1983              		.cfi_offset 14, -8
+ 1984              		.cfi_offset 13, -12
+ 1985              		.cfi_offset 11, -16
+ 1986              	.LCFI1:
+ 1987              		.cfi_def_cfa 11, 4
+  31:../LCD_touch_2025/main.c ****     sys_init();        /* Initial 44B0X's Interrupt, Port and UART */
+ 1988              		.loc 1 31 0
+ 1989 000c FEFFFFEB 		bl	sys_init
+  32:../LCD_touch_2025/main.c ****     // CAMBIARRR _Link();           /* Print Misc info */
+  33:../LCD_touch_2025/main.c ****         /******************/
+  34:../LCD_touch_2025/main.c **** 	/* user interface */
+  35:../LCD_touch_2025/main.c **** 	/******************/
+  36:../LCD_touch_2025/main.c **** 	Lcd_Test();
+ 1990              		.loc 1 36 0
+ 1991 0010 FEFFFFEB 		bl	Lcd_Test
+  37:../LCD_touch_2025/main.c **** 	TS_Test();
+ 1992              		.loc 1 37 0
+ 1993 0014 FEFFFFEB 		bl	TS_Test
+ 1994 0018 000000EA 		b	.L3
+ 1995              	.L4:
+  38:../LCD_touch_2025/main.c **** 		
+  39:../LCD_touch_2025/main.c **** 	while(1)
+  40:../LCD_touch_2025/main.c **** 	 {
+  41:../LCD_touch_2025/main.c **** 	   //CAMBIARRR yn = Uart_Getch();
+  42:../LCD_touch_2025/main.c **** 	   
+  43:../LCD_touch_2025/main.c **** 	   if(yn == 0x52) TS_Test();// R to reset the XY REC
+  44:../LCD_touch_2025/main.c **** 	   //else break;
+  45:../LCD_touch_2025/main.c **** 	 }
+ 1996              		.loc 1 45 0
+ 1997 001c 0000A0E1 		mov	r0, r0	@ nop
+ 1998              	.L3:
+  43:../LCD_touch_2025/main.c **** 	   if(yn == 0x52) TS_Test();// R to reset the XY REC
+ 1999              		.loc 1 43 0
+ 2000 0020 10309FE5 		ldr	r3, .L5
+ 2001 0024 0030D3E5 		ldrb	r3, [r3, #0]	@ zero_extendqisi2
+ 2002 0028 520053E3 		cmp	r3, #82
+ 2003 002c FAFFFF1A 		bne	.L4
+  43:../LCD_touch_2025/main.c **** 	   if(yn == 0x52) TS_Test();// R to reset the XY REC
+ 2004              		.loc 1 43 0 is_stmt 0 discriminator 1
+ 2005 0030 FEFFFFEB 		bl	TS_Test
+ 2006              		.loc 1 45 0 is_stmt 1 discriminator 1
+ 2007 0034 F9FFFFEA 		b	.L3
+ 2008              	.L6:
+ 2009              		.align	2
+ 2010              	.L5:
+ 2011 0038 00000000 		.word	yn
+ 2012              		.cfi_endproc
+ 2013              	.LFE0:
+ 2015              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 main.c
+                            *COM*:00000004 CheckTSP
+                            *COM*:00000004 oneTouch
+                            *COM*:00000004 Vx
+                            *COM*:00000004 Vy
+                            *COM*:00000004 Xmax
+                            *COM*:00000004 Ymax
+                            *COM*:00000004 Xmin
+                            *COM*:00000004 Ymin
+                            *COM*:00000001 yn
+C:\Users\jaime\AppData\Local\Temp\ccXWlPvg.s:1968   .text:00000000 $a
+C:\Users\jaime\AppData\Local\Temp\ccXWlPvg.s:1971   .text:00000000 Main
+C:\Users\jaime\AppData\Local\Temp\ccXWlPvg.s:2011   .text:00000038 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+sys_init
+Lcd_Test
+TS_Test
