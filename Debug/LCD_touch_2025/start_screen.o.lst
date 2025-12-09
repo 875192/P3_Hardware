@@ -1,0 +1,303 @@
+   1              		.cpu arm7tdmi
+   2              		.fpu softvfp
+   3              		.eabi_attribute 20, 1
+   4              		.eabi_attribute 21, 1
+   5              		.eabi_attribute 23, 3
+   6              		.eabi_attribute 24, 1
+   7              		.eabi_attribute 25, 1
+   8              		.eabi_attribute 26, 1
+   9              		.eabi_attribute 30, 6
+  10              		.eabi_attribute 18, 4
+  11              		.file	"start_screen.c"
+  21              	.Ltext0:
+  22              		.file 1 "../LCD_touch_2025/start_screen.c"
+ 1934              		.align	2
+ 1935              		.weak	buttons_read
+ 1937              	buttons_read:
+ 1938              	.LFB0:
+   1:../LCD_touch_2025/start_screen.c **** #include "start_screen.h"
+   2:../LCD_touch_2025/start_screen.c **** 
+   3:../LCD_touch_2025/start_screen.c **** #include <string.h>
+   4:../LCD_touch_2025/start_screen.c **** 
+   5:../LCD_touch_2025/start_screen.c **** /* Assumed LCD helper function signature:
+   6:../LCD_touch_2025/start_screen.c ****  *   void Lcd_Clr(void);                 // Clears the framebuffer
+   7:../LCD_touch_2025/start_screen.c ****  *   void Lcd_DspAscII8x16(INT16U x0, INT16U y0, INT8U ForeColor, INT8U *s);
+   8:../LCD_touch_2025/start_screen.c ****  *   void Lcd_Dma_Trans(void);           // Copies framebuffer to physical LCD
+   9:../LCD_touch_2025/start_screen.c ****  * If your display driver uses different names, replace the calls below accordingly.
+  10:../LCD_touch_2025/start_screen.c ****  */
+  11:../LCD_touch_2025/start_screen.c **** 
+  12:../LCD_touch_2025/start_screen.c **** /*
+  13:../LCD_touch_2025/start_screen.c ****  * Weak fallback implementation so the linker has a default symbol even when
+  14:../LCD_touch_2025/start_screen.c ****  * the board-specific button driver is not linked. Platforms that provide
+  15:../LCD_touch_2025/start_screen.c ****  * their own input routine can override this symbol with a real implementation.
+  16:../LCD_touch_2025/start_screen.c ****  */
+  17:../LCD_touch_2025/start_screen.c **** __attribute__((weak)) unsigned int buttons_read(void)
+  18:../LCD_touch_2025/start_screen.c **** {
+ 1939              		.loc 1 18 0
+ 1940              		.cfi_startproc
+ 1941              		@ Function supports interworking.
+ 1942              		@ args = 0, pretend = 0, frame = 0
+ 1943              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1944 0000 0DC0A0E1 		mov	ip, sp
+ 1945              	.LCFI0:
+ 1946              		.cfi_def_cfa_register 12
+ 1947 0004 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 1948 0008 04B04CE2 		sub	fp, ip, #4
+ 1949              		.cfi_offset 14, -8
+ 1950              		.cfi_offset 13, -12
+ 1951              		.cfi_offset 11, -16
+ 1952              	.LCFI1:
+ 1953              		.cfi_def_cfa 11, 4
+  19:../LCD_touch_2025/start_screen.c ****     /* No buttons detected by default. */
+  20:../LCD_touch_2025/start_screen.c ****     return 0U;
+ 1954              		.loc 1 20 0
+ 1955 000c 0030A0E3 		mov	r3, #0
+  21:../LCD_touch_2025/start_screen.c **** }
+ 1956              		.loc 1 21 0
+ 1957 0010 0300A0E1 		mov	r0, r3
+ 1958 0014 0CD04BE2 		sub	sp, fp, #12
+ 1959 0018 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 1960 001c 1EFF2FE1 		bx	lr
+ 1961              		.cfi_endproc
+ 1962              	.LFE0:
+ 1964              		.align	2
+ 1966              	draw_centered_text:
+ 1967              	.LFB1:
+  22:../LCD_touch_2025/start_screen.c **** 
+  23:../LCD_touch_2025/start_screen.c **** /* Helper to draw horizontally centered ASCII text on the current LCD buffer. */
+  24:../LCD_touch_2025/start_screen.c **** static void draw_centered_text(INT16U y, const char *text)
+  25:../LCD_touch_2025/start_screen.c **** {
+ 1968              		.loc 1 25 0
+ 1969              		.cfi_startproc
+ 1970              		@ Function supports interworking.
+ 1971              		@ args = 0, pretend = 0, frame = 24
+ 1972              		@ frame_needed = 1, uses_anonymous_args = 0
+ 1973 0020 0DC0A0E1 		mov	ip, sp
+ 1974              	.LCFI2:
+ 1975              		.cfi_def_cfa_register 12
+ 1976 0024 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 1977 0028 04B04CE2 		sub	fp, ip, #4
+ 1978              		.cfi_offset 14, -8
+ 1979              		.cfi_offset 13, -12
+ 1980              		.cfi_offset 11, -16
+ 1981              	.LCFI3:
+ 1982              		.cfi_def_cfa 11, 4
+ 1983 002c 18D04DE2 		sub	sp, sp, #24
+ 1984 0030 0030A0E1 		mov	r3, r0
+ 1985 0034 24100BE5 		str	r1, [fp, #-36]
+ 1986 0038 BE314BE1 		strh	r3, [fp, #-30]	@ movhi
+  26:../LCD_touch_2025/start_screen.c ****     size_t len = strlen(text);
+ 1987              		.loc 1 26 0
+ 1988 003c 24001BE5 		ldr	r0, [fp, #-36]
+ 1989 0040 FEFFFFEB 		bl	strlen
+ 1990 0044 0030A0E1 		mov	r3, r0
+ 1991 0048 14300BE5 		str	r3, [fp, #-20]
+  27:../LCD_touch_2025/start_screen.c ****     INT16U char_width = 8; /* Each character in the 8x16 font is 8 pixels wide. */
+ 1992              		.loc 1 27 0
+ 1993 004c 0830A0E3 		mov	r3, #8
+ 1994 0050 B6314BE1 		strh	r3, [fp, #-22]	@ movhi
+  28:../LCD_touch_2025/start_screen.c ****     INT16U x = 0;
+ 1995              		.loc 1 28 0
+ 1996 0054 0030A0E3 		mov	r3, #0
+ 1997 0058 BE304BE1 		strh	r3, [fp, #-14]	@ movhi
+  29:../LCD_touch_2025/start_screen.c **** 
+  30:../LCD_touch_2025/start_screen.c ****     if (len * char_width < LCD_XSIZE)
+ 1998              		.loc 1 30 0
+ 1999 005c B6315BE1 		ldrh	r3, [fp, #-22]
+ 2000 0060 14201BE5 		ldr	r2, [fp, #-20]
+ 2001 0064 930202E0 		mul	r2, r3, r2
+ 2002 0068 5C309FE5 		ldr	r3, .L4
+ 2003 006c 030052E1 		cmp	r2, r3
+ 2004 0070 0B00008A 		bhi	.L3
+  31:../LCD_touch_2025/start_screen.c ****     {
+  32:../LCD_touch_2025/start_screen.c ****         x = (LCD_XSIZE - (INT16U)(len * char_width)) / 2;
+ 2005              		.loc 1 32 0
+ 2006 0074 14301BE5 		ldr	r3, [fp, #-20]
+ 2007 0078 0338A0E1 		mov	r3, r3, asl #16
+ 2008 007c 2338A0E1 		mov	r3, r3, lsr #16
+ 2009 0080 B6215BE1 		ldrh	r2, [fp, #-22]	@ movhi
+ 2010 0084 920303E0 		mul	r3, r2, r3
+ 2011 0088 0338A0E1 		mov	r3, r3, asl #16
+ 2012 008c 2338A0E1 		mov	r3, r3, lsr #16
+ 2013 0090 053D63E2 		rsb	r3, r3, #320
+ 2014 0094 A32FA0E1 		mov	r2, r3, lsr #31
+ 2015 0098 033082E0 		add	r3, r2, r3
+ 2016 009c C330A0E1 		mov	r3, r3, asr #1
+ 2017 00a0 BE304BE1 		strh	r3, [fp, #-14]	@ movhi
+ 2018              	.L3:
+  33:../LCD_touch_2025/start_screen.c ****     }
+  34:../LCD_touch_2025/start_screen.c **** 
+  35:../LCD_touch_2025/start_screen.c ****     Lcd_DspAscII8x16(x, y, BLACK, (INT8U *)text);
+ 2019              		.loc 1 35 0
+ 2020 00a4 BE205BE1 		ldrh	r2, [fp, #-14]
+ 2021 00a8 BE315BE1 		ldrh	r3, [fp, #-30]
+ 2022 00ac 0200A0E1 		mov	r0, r2
+ 2023 00b0 0310A0E1 		mov	r1, r3
+ 2024 00b4 0F20A0E3 		mov	r2, #15
+ 2025 00b8 24301BE5 		ldr	r3, [fp, #-36]
+ 2026 00bc FEFFFFEB 		bl	Lcd_DspAscII8x16
+  36:../LCD_touch_2025/start_screen.c **** }
+ 2027              		.loc 1 36 0
+ 2028 00c0 0CD04BE2 		sub	sp, fp, #12
+ 2029 00c4 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 2030 00c8 1EFF2FE1 		bx	lr
+ 2031              	.L5:
+ 2032              		.align	2
+ 2033              	.L4:
+ 2034 00cc 3F010000 		.word	319
+ 2035              		.cfi_endproc
+ 2036              	.LFE1:
+ 2038              		.section	.rodata
+ 2039              		.align	2
+ 2040              	.LC0:
+ 2041 0000 5355444F 		.ascii	"SUDOKU\000"
+ 2041      4B5500
+ 2042 0007 00       		.align	2
+ 2043              	.LC1:
+ 2044 0008 55736520 		.ascii	"Use los botones para introducir\000"
+ 2044      6C6F7320 
+ 2044      626F746F 
+ 2044      6E657320 
+ 2044      70617261 
+ 2045              		.align	2
+ 2046              	.LC2:
+ 2047 0028 66696C61 		.ascii	"fila, columna y valor\000"
+ 2047      2C20636F 
+ 2047      6C756D6E 
+ 2047      61207920 
+ 2047      76616C6F 
+ 2048 003e 0000     		.align	2
+ 2049              	.LC3:
+ 2050 0040 53696761 		.ascii	"Siga las reglas del Sudoku\000"
+ 2050      206C6173 
+ 2050      20726567 
+ 2050      6C617320 
+ 2050      64656C20 
+ 2051 005b 00       		.align	2
+ 2052              	.LC4:
+ 2053 005c 50756C73 		.ascii	"Pulse un boton para jugar\000"
+ 2053      6520756E 
+ 2053      20626F74 
+ 2053      6F6E2070 
+ 2053      61726120 
+ 2054 0076 0000     		.text
+ 2055              		.align	2
+ 2056              		.global	show_start_screen_and_wait_button
+ 2058              	show_start_screen_and_wait_button:
+ 2059              	.LFB2:
+  37:../LCD_touch_2025/start_screen.c **** 
+  38:../LCD_touch_2025/start_screen.c **** /*
+  39:../LCD_touch_2025/start_screen.c ****  * Displays the initial instruction screen and waits until any hardware button
+  40:../LCD_touch_2025/start_screen.c ****  * is pressed. Once a button press is detected, the function returns so the
+  41:../LCD_touch_2025/start_screen.c ****  * caller can start the game logic.
+  42:../LCD_touch_2025/start_screen.c ****  */
+  43:../LCD_touch_2025/start_screen.c **** void show_start_screen_and_wait_button(void)
+  44:../LCD_touch_2025/start_screen.c **** {
+ 2060              		.loc 1 44 0
+ 2061              		.cfi_startproc
+ 2062              		@ Function supports interworking.
+ 2063              		@ args = 0, pretend = 0, frame = 0
+ 2064              		@ frame_needed = 1, uses_anonymous_args = 0
+ 2065 00d0 0DC0A0E1 		mov	ip, sp
+ 2066              	.LCFI4:
+ 2067              		.cfi_def_cfa_register 12
+ 2068 00d4 00D82DE9 		stmfd	sp!, {fp, ip, lr, pc}
+ 2069 00d8 04B04CE2 		sub	fp, ip, #4
+ 2070              		.cfi_offset 14, -8
+ 2071              		.cfi_offset 13, -12
+ 2072              		.cfi_offset 11, -16
+ 2073              	.LCFI5:
+ 2074              		.cfi_def_cfa 11, 4
+  45:../LCD_touch_2025/start_screen.c ****     /* Clear framebuffer before drawing. */
+  46:../LCD_touch_2025/start_screen.c ****     Lcd_Clr();
+ 2075              		.loc 1 46 0
+ 2076 00dc FEFFFFEB 		bl	Lcd_Clr
+  47:../LCD_touch_2025/start_screen.c **** 
+  48:../LCD_touch_2025/start_screen.c ****     /* Title and instructions. */
+  49:../LCD_touch_2025/start_screen.c ****     draw_centered_text(20, "SUDOKU");
+ 2077              		.loc 1 49 0
+ 2078 00e0 1400A0E3 		mov	r0, #20
+ 2079 00e4 5C109FE5 		ldr	r1, .L10
+ 2080 00e8 CCFFFFEB 		bl	draw_centered_text
+  50:../LCD_touch_2025/start_screen.c ****     draw_centered_text(60, "Use los botones para introducir");
+ 2081              		.loc 1 50 0
+ 2082 00ec 3C00A0E3 		mov	r0, #60
+ 2083 00f0 54109FE5 		ldr	r1, .L10+4
+ 2084 00f4 C9FFFFEB 		bl	draw_centered_text
+  51:../LCD_touch_2025/start_screen.c ****     draw_centered_text(80, "fila, columna y valor");
+ 2085              		.loc 1 51 0
+ 2086 00f8 5000A0E3 		mov	r0, #80
+ 2087 00fc 4C109FE5 		ldr	r1, .L10+8
+ 2088 0100 C6FFFFEB 		bl	draw_centered_text
+  52:../LCD_touch_2025/start_screen.c ****     draw_centered_text(100, "Siga las reglas del Sudoku");
+ 2089              		.loc 1 52 0
+ 2090 0104 6400A0E3 		mov	r0, #100
+ 2091 0108 44109FE5 		ldr	r1, .L10+12
+ 2092 010c C3FFFFEB 		bl	draw_centered_text
+  53:../LCD_touch_2025/start_screen.c **** 
+  54:../LCD_touch_2025/start_screen.c ****     /* Required legend prompting the player to begin. */
+  55:../LCD_touch_2025/start_screen.c ****     draw_centered_text(140, "Pulse un boton para jugar");
+ 2093              		.loc 1 55 0
+ 2094 0110 8C00A0E3 		mov	r0, #140
+ 2095 0114 3C109FE5 		ldr	r1, .L10+16
+ 2096 0118 C0FFFFEB 		bl	draw_centered_text
+  56:../LCD_touch_2025/start_screen.c **** 
+  57:../LCD_touch_2025/start_screen.c ****     /* Push the framebuffer to the LCD. */
+  58:../LCD_touch_2025/start_screen.c ****     Lcd_Dma_Trans();
+ 2097              		.loc 1 58 0
+ 2098 011c FEFFFFEB 		bl	Lcd_Dma_Trans
+ 2099 0120 000000EA 		b	.L8
+ 2100              	.L9:
+  59:../LCD_touch_2025/start_screen.c **** 
+  60:../LCD_touch_2025/start_screen.c ****     /* Block here until any button is detected. Replace buttons_read() with
+  61:../LCD_touch_2025/start_screen.c ****      * your board's input-reading API if needed. */
+  62:../LCD_touch_2025/start_screen.c ****     while (1)
+  63:../LCD_touch_2025/start_screen.c ****     {
+  64:../LCD_touch_2025/start_screen.c ****         if (buttons_read() != 0U)
+  65:../LCD_touch_2025/start_screen.c ****         {
+  66:../LCD_touch_2025/start_screen.c ****             break;
+  67:../LCD_touch_2025/start_screen.c ****         }
+  68:../LCD_touch_2025/start_screen.c ****     }
+ 2101              		.loc 1 68 0
+ 2102 0124 0000A0E1 		mov	r0, r0	@ nop
+ 2103              	.L8:
+  64:../LCD_touch_2025/start_screen.c ****         if (buttons_read() != 0U)
+ 2104              		.loc 1 64 0
+ 2105 0128 FEFFFFEB 		bl	buttons_read
+ 2106 012c 0030A0E1 		mov	r3, r0
+ 2107 0130 000053E3 		cmp	r3, #0
+ 2108 0134 FAFFFF0A 		beq	.L9
+  69:../LCD_touch_2025/start_screen.c **** }
+ 2109              		.loc 1 69 0
+ 2110 0138 0000A0E1 		mov	r0, r0	@ nop
+ 2111 013c 0CD04BE2 		sub	sp, fp, #12
+ 2112 0140 00689DE8 		ldmfd	sp, {fp, sp, lr}
+ 2113 0144 1EFF2FE1 		bx	lr
+ 2114              	.L11:
+ 2115              		.align	2
+ 2116              	.L10:
+ 2117 0148 00000000 		.word	.LC0
+ 2118 014c 08000000 		.word	.LC1
+ 2119 0150 28000000 		.word	.LC2
+ 2120 0154 40000000 		.word	.LC3
+ 2121 0158 5C000000 		.word	.LC4
+ 2122              		.cfi_endproc
+ 2123              	.LFE2:
+ 2125              	.Letext0:
+DEFINED SYMBOLS
+                            *ABS*:00000000 start_screen.c
+C:\Users\jaime\AppData\Local\Temp\ccpe7FIj.s:1934   .text:00000000 $a
+C:\Users\jaime\AppData\Local\Temp\ccpe7FIj.s:1937   .text:00000000 buttons_read
+C:\Users\jaime\AppData\Local\Temp\ccpe7FIj.s:1966   .text:00000020 draw_centered_text
+C:\Users\jaime\AppData\Local\Temp\ccpe7FIj.s:2034   .text:000000cc $d
+C:\Users\jaime\AppData\Local\Temp\ccpe7FIj.s:2039   .rodata:00000000 $d
+C:\Users\jaime\AppData\Local\Temp\ccpe7FIj.s:2055   .text:000000d0 $a
+C:\Users\jaime\AppData\Local\Temp\ccpe7FIj.s:2058   .text:000000d0 show_start_screen_and_wait_button
+C:\Users\jaime\AppData\Local\Temp\ccpe7FIj.s:2117   .text:00000148 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+strlen
+Lcd_DspAscII8x16
+Lcd_Clr
+Lcd_Dma_Trans
